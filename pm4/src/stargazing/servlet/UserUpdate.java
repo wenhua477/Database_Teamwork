@@ -35,7 +35,7 @@ public class UserUpdate extends HttpServlet {
 		// Retrieve user and validate.
 		String userId = req.getParameter("userid");
 		if (userId == null || userId.trim().isEmpty()) {
-			messages.put("success", "Please enter a valid UserId. line 38");
+			messages.put("success", "Please enter a valid UserId.");
 		} else {
 			try {
 				Users user = usersDao.getUserById(Integer.parseInt(userId));
@@ -62,7 +62,7 @@ public class UserUpdate extends HttpServlet {
 		// Retrieve user and validate.
 		String userId = req.getParameter("userid");
 		if (userId == null || userId.trim().isEmpty()) {
-			messages.put("success", "Please enter a valid UserId. line 65");
+			messages.put("success", "Please enter a valid UserId.");
 		} else {
 			try {
 				Users user = usersDao.getUserById(Integer.parseInt(userId));

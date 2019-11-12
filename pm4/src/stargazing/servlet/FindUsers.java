@@ -98,7 +98,7 @@ public class FindUsers extends HttpServlet {
     			e.printStackTrace();
     			throw new IOException(e);
             }
-        	messages.put("success", "Displaying results for " + firstName);
+        	messages.put("success", "Displaying results for user with first name being " + firstName);
         }
         req.setAttribute("users", users);
         
