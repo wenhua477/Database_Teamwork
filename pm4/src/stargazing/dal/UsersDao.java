@@ -133,7 +133,7 @@ public class UsersDao extends PersonsDao {
       selectStmt.setString(1, firstName);
       results = selectStmt.executeQuery();
 
-      if (results.next()) {
+      while (results.next()) {
 
         String userName = results.getString("UserName");
         String password = results.getString("Password");
