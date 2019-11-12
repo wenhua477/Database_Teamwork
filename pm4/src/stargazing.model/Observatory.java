@@ -1,5 +1,4 @@
-package model;
-
+package stargaing.model;
 public class Observatory extends StarGazingPlaces {
 
   protected double price;

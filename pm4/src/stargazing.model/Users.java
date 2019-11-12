@@ -1,5 +1,4 @@
-package model;
-
+package stargaing.model;
 public class Users extends Persons{
 	protected String firstName;
 	protected String lastName;

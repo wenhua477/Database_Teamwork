@@ -1,5 +1,4 @@
-package model;
-
+package stargaing.model;
 import java.util.Date;
 import javax.swing.text.AbstractDocument.Content;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter.DEFAULT;

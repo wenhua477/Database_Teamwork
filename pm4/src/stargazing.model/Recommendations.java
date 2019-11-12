@@ -1,5 +1,4 @@
-package model;
-
+package stargaing.model;
 public class Recommendations {
   protected int recommendationId;
   protected int placeId;

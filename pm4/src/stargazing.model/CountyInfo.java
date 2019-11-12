@@ -1,5 +1,4 @@
-package model;
-
+package stargaing.model;
 public class CountyInfo {
 	protected String countyName;
 	protected double crimeRate;

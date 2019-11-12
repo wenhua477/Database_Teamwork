@@ -1,5 +1,4 @@
-package model;
-
+package stargaing.model;
 public class StarGazingPlaces {
   protected int placeId;
   protected double latitude;

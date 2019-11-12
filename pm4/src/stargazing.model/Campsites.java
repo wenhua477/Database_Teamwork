@@ -1,4 +1,4 @@
-package model;
+package stargaing.model;
 
 public class Campsites extends StarGazingPlaces {
 

@@ -1,5 +1,4 @@
-package model;
-
+package stargaing.model;
 public class LocationInfo {
 	protected double latitude;
 	protected double longitude;

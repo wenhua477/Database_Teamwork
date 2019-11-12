@@ -1,5 +1,4 @@
-package model;
-
+package stargaing.model;
 public class Persons {
 	protected int userId;
 	protected String userName;

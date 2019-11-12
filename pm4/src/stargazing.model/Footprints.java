@@ -1,5 +1,4 @@
-package model;
-
+package stargaing.model;
 import java.util.Date;
 
 public class Footprints {
