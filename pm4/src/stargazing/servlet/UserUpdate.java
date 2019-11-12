@@ -74,7 +74,7 @@ public class UserUpdate extends HttpServlet {
 						messages.put("success", "Please enter a valid LastName.");
 					} else {
 						user = usersDao.updateLastName(user, newLastName);
-						messages.put("success", "Successfully updated " + userId);
+						messages.put("success", "Successfully updated user with id " + userId);
 					}
 				}
 				req.setAttribute("user", user);

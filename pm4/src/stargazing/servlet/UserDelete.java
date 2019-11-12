@@ -54,7 +54,7 @@ public class UserDelete extends HttpServlet {
 	        	user = usersDao.delete(user);
 	        	// Update the message.
 		        if (user == null) {
-		            messages.put("title", "Successfully deleted " + userId);
+		            messages.put("title", "Successfully deleted user with id " + userId);
 		            messages.put("disableSubmit", "true");
 		        } else {
 		        	messages.put("title", "Failed to delete " + userId);
