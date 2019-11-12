@@ -10,9 +10,9 @@ public class Users extends Persons{
 	protected String zip;
 	protected UserLevel userLevel;
 	public enum UserLevel{
-		ACTIVE, NORMAL, LAZY
+		active, normal, lazy
 	}
-	
+
 	public Users(int userId) {
 		super(userId);
 	}

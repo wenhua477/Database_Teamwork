@@ -62,9 +62,9 @@ public class UsersDao extends PersonsDao {
 
   public Users getUserById(int userId) throws SQLException {
     String selectUsers =
-        "SELECT Users.UserId AS UserId, UserName, Password, FirstName, LastName, Email, Phone, Street"
+        "SELECT Users.UserId AS UserId, UserName, Password, FirstName, LastName, Email, Phone, Street，"
             +
-            "City, State, Zip, Level" +
+            "City, State, Zip, Level " +
             "FROM Users INNER JOIN Persons " +
             "  ON Users.UserId = Persons.UserId " +
             "WHERE Users.UserId=?;";
@@ -116,9 +116,9 @@ public class UsersDao extends PersonsDao {
 
   public List<Users> getUserByFirstname(String firstName) throws SQLException {
     String selectUsers =
-        "SELECT Users.UserId AS UserId, UserName, Password, FirstName, LastName, Email, Phone, Street"
+        "SELECT Users.UserId AS UserId, UserName, Password, FirstName, LastName, Email, Phone, Street,"
             +
-            "City, State, Zip, Level" +
+            "City, State, Zip, Level " +
             "FROM Users INNER JOIN Persons " +
             "  ON Users.UserId = Persons.UserId " +
             "WHERE Users.FirstName=?;";
@@ -169,9 +169,9 @@ public class UsersDao extends PersonsDao {
 
 public Users getUserByUserName(String userName) throws SQLException {
   String selectUsers =
-      "SELECT Users.UserId AS UserId, UserName, Password, FirstName, LastName, Email, Phone, Street"
+      "SELECT Users.UserId AS UserId, UserName, Password, FirstName, LastName, Email, Phone, Street,"
           +
-          "City, State, Zip, Level" +
+          "City, State, Zip, Level " +
           "FROM Users INNER JOIN Persons " +
           "  ON Users.UserId = Persons.UserId " +
           "WHERE Users.UserName=?;";

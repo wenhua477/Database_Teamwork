@@ -55,7 +55,7 @@ public class AdministratorsDao extends PersonsDao {
 
   public Administrators getAdministratorsById(int userId) throws SQLException {
     String selectAdministrators =
-        "SELECT Administrators.UserId AS UserId, UserName, Password, LastLogin" +
+        "SELECT Administrators.UserId AS UserId, UserName, Password, LastLogin " +
             "FROM Administrators INNER JOIN Persons " +
             "  ON Administrators.UserId = Persons.UserId " +
             "WHERE Administrators.UserId=?;";
