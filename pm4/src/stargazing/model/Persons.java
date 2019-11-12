@@ -16,6 +16,11 @@ public class Persons {
 		this.password = password;
 	}
 
+	public Persons(String userName) {
+		this.userName = userName;
+	}
+
+
 	public Persons(int userId) {
 		this.userId = userId;
 	}

@@ -60,7 +60,7 @@ public class UserCreate extends HttpServlet {
         // Exercise: parse the input for StatusLevel.
         Users user = new Users(userName, password, firstName, lastName, email, phone, street, city,
             state, zip,
-            UserLevel.NORMAL);
+            UserLevel.normal);
         user = usersDao.create(user);
         messages.put("success", "Successfully created " + userName);
       } catch (SQLException e) {

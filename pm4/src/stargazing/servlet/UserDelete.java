@@ -45,11 +45,10 @@ public class UserDelete extends HttpServlet {
 
         // Retrieve and validate name.
         String userId = req.getParameter("userId");
-        if (userId == null || userId.trim().isEmpty() || (!(userId.matches("\\d*") && userId.length() > 2))) {
-            messages.put("title", "Invalid UserName");
+        if (userId == null || userId.trim().isEmpty()) {
+            messages.put("title", "Invalid UserId");
             messages.put("disableSubmit", "true");
         } else {
-        	// Delete the BlogUser.
 	        Users user = new Users(Integer.parseInt(userId));
 	        try {
 	        	user = usersDao.delete(user);

@@ -26,31 +26,31 @@
 			<input id="lastname" name="lastname" value="">
 		</p>
 		<p>
-			<label for="email">FirstName</label>
+			<label for="email">Email</label>
 			<input id="email" name="email" value="">
 		</p>
 		<p>
-			<label for="phone">FirstName</label>
+			<label for="phone">Phone</label>
 			<input id="phone" name="phone" value="">
 		</p>
 		<p>
-			<label for="street">FirstName</label>
+			<label for="street">Street</label>
 			<input id="street" name="street" value="">
 		</p>
 		<p>
-			<label for="city">FirstName</label>
+			<label for="city">City</label>
 			<input id="city" name="city" value="">
 		</p>
 		<p>
-			<label for="state">FirstName</label>
+			<label for="state">State</label>
 			<input id="state" name="state" value="">
 		</p>
 		<p>
-			<label for="zip">FirstName</label>
+			<label for="zip">Zip</label>
 			<input id="zip" name="zip" value="">
 		</p>
 		<p>
-			<label for="password">FirstName</label>
+			<label for="password">Password</label>
 			<input id="password" name="password" value="">
 		</p>
 

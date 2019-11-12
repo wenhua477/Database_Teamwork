@@ -16,6 +16,11 @@ public class Users extends Persons{
 	public Users(int userId) {
 		super(userId);
 	}
+	public Users(String userName){
+		super(userName);
+	}
+
+
 
 	public Users(int userId, String userName, String password, String firstName, String lastName, String email,
 			String phone, String street, String city, String state, String zip, UserLevel userLevel) {

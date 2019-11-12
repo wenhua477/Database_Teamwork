@@ -14,8 +14,8 @@
 	<h1>Update User</h1>
 	<form action="userupdate" method="post">
 		<p>
-			<label for="username">UserName</label>
-			<input id="username" name="username" value="${fn:escapeXml(param.username)}">
+			<label for="userid">User Id</label>
+			<input id="userid" name="userid" value="${fn:escapeXml(param.userId)}">
 		</p>
 		<p>
 			<label for="lastname">New LastName</label>
