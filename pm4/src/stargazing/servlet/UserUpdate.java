@@ -1,7 +1,6 @@
 package stargazing.servlet;
 
-import blog.dal.*;
-import blog.model.*;
+import stargazing.dal.*;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -13,16 +12,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import stargazing.model.Users;
 
 
 @WebServlet("/userupdate")
 public class UserUpdate extends HttpServlet {
 	
-	protected BlogUsersDao blogUsersDao;
+	protected UsersDao usersDao;
 	
 	@Override
 	public void init() throws ServletException {
-		blogUsersDao = BlogUsersDao.getInstance();
+		usersDao = UsersDao.getInstance();
 	}
 	
 	@Override
@@ -38,11 +38,11 @@ public class UserUpdate extends HttpServlet {
             messages.put("success", "Please enter a valid UserName.");
         } else {
         	try {
-        		BlogUsers blogUser = blogUsersDao.getBlogUserFromUserName(userName);
-        		if(blogUser == null) {
+        		Users user = usersDao.getUserByUserName(userName);
+        		if(user == null) {
         			messages.put("success", "UserName does not exist.");
         		}
-        		req.setAttribute("blogUser", blogUser);
+        		req.setAttribute("user", user);
         	} catch (SQLException e) {
 				e.printStackTrace();
 				throw new IOException(e);
@@ -65,19 +65,19 @@ public class UserUpdate extends HttpServlet {
             messages.put("success", "Please enter a valid UserName.");
         } else {
         	try {
-        		BlogUsers blogUser = blogUsersDao.getBlogUserFromUserName(userName);
-        		if(blogUser == null) {
+        		Users user = usersDao.getUserByUserName(userName);
+        		if(user == null) {
         			messages.put("success", "UserName does not exist. No update to perform.");
         		} else {
         			String newLastName = req.getParameter("lastname");
         			if (newLastName == null || newLastName.trim().isEmpty()) {
         	            messages.put("success", "Please enter a valid LastName.");
         	        } else {
-        	        	blogUser = blogUsersDao.updateLastName(blogUser, newLastName);
+        	        	user = usersDao.updateLastName(user, newLastName);
         	        	messages.put("success", "Successfully updated " + userName);
         	        }
         		}
-        		req.setAttribute("blogUser", blogUser);
+        		req.setAttribute("user", user);
         	} catch (SQLException e) {
 				e.printStackTrace();
 				throw new IOException(e);
