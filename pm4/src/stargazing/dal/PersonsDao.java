@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import model.*;
 import stargazing.model.Persons;
 
 public class PersonsDao {
@@ -102,7 +101,7 @@ public class PersonsDao {
 		}
 	 
 	 public Persons delete(Persons person) throws SQLException{
-			String deletePerson = "DELETE FROM Persons WHERE userId=?;";
+			String deletePerson = "DELETE FROM Persons WHERE UserId=?;";
 			
 			Connection connection = null;
 			PreparedStatement deleteStmt = null;
