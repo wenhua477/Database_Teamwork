@@ -8,10 +8,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Create a User</title>
+<title>Create a Stargazing User</title>
 </head>
 <body>
-	<h1>Create User</h1>
+	<h1>Create Stargazing User</h1>
 	<form action="usercreate" method="post">
 		<p>
 			<label for="username">UserName</label>

@@ -65,7 +65,7 @@ public class FindUsers extends HttpServlet {
     			e.printStackTrace();
     			throw new IOException(e);
             }
-        	messages.put("success", "Displaying results for " + firstName);
+        	messages.put("success", "Displaying results for user with first name being " + firstName);
         	// Save the previous search term, so it can be used as the default
         	// in the input box when rendering FindUsers.jsp.
         	messages.put("previousFirstName", firstName);

@@ -46,7 +46,7 @@ public class UserCreate extends HttpServlet {
     if (userName == null || userName.trim().isEmpty()) {
       messages.put("success", "Invalid UserName");
     } else {
-      // Create the BlogUser.
+      // Create the User.
       String firstName = req.getParameter("firstname");
       String lastName = req.getParameter("lastname");
       String email = req.getParameter("email");

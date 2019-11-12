@@ -24,7 +24,7 @@
 		</p>
 	</form>
 	<br/>
-	<div id="userCreate"><a href="usercreate">Create BlogUser</a></div>
+	<div id="userCreate"><a href="usercreate">Create Stargazing User</a></div>
 	<br/>
 	<h1>Matching Users</h1>
         <table border="1">
