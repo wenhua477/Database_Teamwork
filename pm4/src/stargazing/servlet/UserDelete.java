@@ -44,7 +44,7 @@ public class UserDelete extends HttpServlet {
         req.setAttribute("messages", messages);
 
         // Retrieve and validate name.
-        String userId = req.getParameter("userId");
+        String userId = req.getParameter("userid");
         if (userId == null || userId.trim().isEmpty()) {
             messages.put("title", "Invalid UserId");
             messages.put("disableSubmit", "true");

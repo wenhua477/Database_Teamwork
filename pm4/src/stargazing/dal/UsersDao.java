@@ -61,11 +61,12 @@ public class UsersDao extends PersonsDao {
   }
 
   public Users getUserById(int userId) throws SQLException {
+//	  System.out.print(userId * 10);
     String selectUsers =
-        "SELECT Users.UserId AS UserId, UserName, Password, FirstName, LastName, Email, Phone, Street，"
+        "SELECT Users.UserId AS UserId, Persons.UserName AS UserName, Persons.Password AS Password,FirstName, LastName, Email, Phone, Street," 
             +
             "City, State, Zip, Level " +
-            "FROM Users INNER JOIN Persons " +
+            "FROM Users LEFT OUTER JOIN Persons " +
             "  ON Users.UserId = Persons.UserId " +
             "WHERE Users.UserId=?;";
     Connection connection = null;
@@ -116,10 +117,10 @@ public class UsersDao extends PersonsDao {
 
   public List<Users> getUserByFirstname(String firstName) throws SQLException {
     String selectUsers =
-        "SELECT Users.UserId AS UserId, UserName, Password, FirstName, LastName, Email, Phone, Street,"
+        "SELECT Users.UserId AS UserId, Persons.UserName AS UserName, Persons.Password AS Password, FirstName, LastName, Email, Phone, Street,"
             +
             "City, State, Zip, Level " +
-            "FROM Users INNER JOIN Persons " +
+            "FROM Users LEFT OUTER JOIN Persons " +
             "  ON Users.UserId = Persons.UserId " +
             "WHERE Users.FirstName=?;";
     List<Users> users = new ArrayList<Users>();

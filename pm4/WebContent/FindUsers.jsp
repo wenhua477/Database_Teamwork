@@ -49,8 +49,8 @@
 
 
 
-                    <td><a href="userdelete?username=<c:out value="${user.getUserName()}"/>">Delete</a></td>
-                    <td><a href="userupdate?username=<c:out value="${user.getUserName()}"/>">Update</a></td>
+                    <td><a href="userdelete?userid=<c:out value="${user.getUserId()}"/>">Delete</a></td>
+                    <td><a href="userupdate?userid=<c:out value="${user.getUserId()}"/>">Update</a></td>
                 </tr>
             </c:forEach>
        </table>
