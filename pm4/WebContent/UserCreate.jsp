@@ -62,5 +62,6 @@
 	<p>
 		<span id="successMessage"><b>${messages.success}</b></span>
 	</p>
+	        <div id="findusers"><a href="findusers">Go Back To Find Users</a></div>
 </body>
 </html>
