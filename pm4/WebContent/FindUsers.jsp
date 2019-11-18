@@ -8,26 +8,27 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <title>Find a Stargazing User</title>
 </head>
-<body>
+<body class="mr-2 ml-2">
+	<h2>Search for a Stargazing User by FirstName</h2>
 	<form action="findusers" method="post">
-		<h1>Search for a Stargazing User by FirstName</h1>
-		<p>
-			<label for="firstname">FirstName</label>
-			<input id="firstname" name="firstname" value="${fn:escapeXml(param.firstname)}">
-		</p>
-		<p>
-			<input type="submit">
-			<br/><br/><br/>
-			<span id="successMessage"><b>${messages.success}</b></span>
-		</p>
+		<br/>
+		<div class="form-group form-inline">
+			<label class="text-secondary mr-2" for="firstname">FirstName</label>
+			<input class = "form-control" id="firstname" name="firstname" value="${fn:escapeXml(param.firstname)}">
+			<input class="btn btn-info ml-2 mr-2" type="submit">
+		</div>
+		<div>
+			<span class="form-text text-info" id="successMessage"><b>${messages.success}</b></span>
+		</div>
 	</form>
 	<br/>
 	<div id="userCreate"><a href="usercreate">Create Stargazing User</a></div>
 	<br/>
-	<h1>Matching Users</h1>
-        <table border="1">
+	<h3>Matching Users</h3>
+        <table class="table" border="1">
             <tr>
                 <th>UserName</th>
                 <th>FirstName</th>

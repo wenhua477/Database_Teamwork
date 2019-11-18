@@ -8,22 +8,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <title>Update a User</title>
 </head>
-<body>
-	<h1>Update User</h1>
+<body class="mr-2 ml-2">
+	<h2>Update User</h2>
 	<form action="userupdate" method="post">
-		<p>
-			<label for="userid">User Id</label>
-			<input id="userid" name="userid" value="${fn:escapeXml(param.userid)}">
-		</p>
-		<p>
-			<label for="lastname">New LastName</label>
-			<input id="lastname" name="lastname" value="">
-		</p>
-		<p>
-			<input type="submit">
-		</p>
+		<div class="form-group form-inline">
+			<label class="text-secondary col-2" for="userid">User Id</label>
+			<input class="form-control" id="userid" name="userid" value="${fn:escapeXml(param.userid)}">
+		</div>
+		<div class="form-group form-inline">
+			<label class="text-secondary col-2" for="lastname">New LastName</label>
+			<input class="form-control" id="lastname" name="lastname" value="">
+		</div>
+		<div class="form-group form-inline offset-md-2">
+			<input class="btn btn-info ml-2 mr-2" type="submit">
+		</div>
 	</form>
 	<br/><br/>
 	<p>

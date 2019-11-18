@@ -8,20 +8,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <title>Delete a User</title>
 </head>
-<body>
-	<h1>${messages.title}</h1>
+<body class="mr-2 ml-2">
+	<h2>${messages.title}</h2>
 	<form action="userdelete" method="post">
 		<p>
-			<div <c:if test="${messages.disableSubmit}">style="display:none"</c:if>>
-				<label for="userid">UserId</label>
-				<input id="userid" name="userid" value="${fn:escapeXml(param.userid)}">
+			<div class="form-group form-inline" <c:if test="${messages.disableSubmit}">style="display:none"</c:if>>
+				<label class="text-secondary" for="userid">UserId</label>
+				<input class="form-control ml-1" id="userid" name="userid" value="${fn:escapeXml(param.userid)}">
 			</div>
 		</p>
 		<p>
-			<span id="submitButton" <c:if test="${messages.disableSubmit}">style="display:none"</c:if>>
-			<input type="submit">
+			<span class="form-text text-info" id="submitButton" <c:if test="${messages.disableSubmit}">style="display:none"</c:if>>
+			<input class="btn btn-info ml-5 mr-2" type="submit">
 			</span>
 		</p>
 	</form>
