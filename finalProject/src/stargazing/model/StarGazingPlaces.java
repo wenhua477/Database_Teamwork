@@ -4,6 +4,7 @@ public class StarGazingPlaces {
   protected double latitude;
   protected double longitude;
   protected String state;
+  protected double distance;
 
   public int getPlaceId() {
     return placeId;
@@ -36,6 +37,14 @@ public class StarGazingPlaces {
   public void setState(String state) {
     this.state = state;
   }
+  
+  public double getDistance() {
+	    return distance;
+	  }
+  
+  public void setDistance(double distance) {
+	    this.distance = distance;
+	  }
 
   public StarGazingPlaces(double latitude, double longitude, String state) {
     this.latitude = latitude;
@@ -49,4 +58,12 @@ public class StarGazingPlaces {
     this.longitude = longitude;
     this.state = state;
   }
+  
+  public StarGazingPlaces(int placeId, double latitude, double longitude, String state, double distance) {
+	    this.placeId = placeId;
+	    this.latitude = latitude;
+	    this.longitude = longitude;
+	    this.state = state;
+	    this.distance = distance;
+	  }
 }

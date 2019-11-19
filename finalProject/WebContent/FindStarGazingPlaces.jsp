@@ -13,11 +13,17 @@
 </head>
 <body class="mr-2 ml-2">
 	<h2>Search for Stargazing Places</h2>
-	<form action="findPlaces" method="post">
+	<form action="findstargazingplace" method="post">
 		<br/>
 	    <div class="form-group form-inline">
-	      <label class="text-secondary col-1">Location</label>
-	      <input class = "form-control" id="location" name="location" value="${fn:escapeXml(param.location)}">
+	      <!-- <label class="text-secondary col-1">Location</label> -->
+	      <label>Latitude</label>
+	      <input class = "form-control" id="latitude" name="latitude" value="${fn:escapeXml(param.latitude)}">
+
+	      <label>Longitude</label>
+	      <input class = "form-control" id="longitude" name="longitude" value="${fn:escapeXml(param.longitude)}">
+	      <label>Radius</label>
+	      <input class = "form-control" id="radius" name="radius" value="${fn:escapeXml(param.radius)}">
 	    </div>
 	    <div class="form-group form-inline offset-md-1">
 			<input class="btn btn-info mr-2" type="submit">
@@ -28,26 +34,23 @@
 		<BR/>
 		<table class="table" border="1">
             <tr>
-                <th>Name</th>
-                <th>Type</th>
-                <th>CrimeRate</th>
-                <th>Weather</th>
-                <th>Temperate</th>
-                <th>Elevation</th>
+                <th>Place Id</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>State</th>
+                <th>Distance</th>
+                <th>Detail</th>
+
             </tr>
             <c:forEach items="${places}" var="place" >
                 <tr>
-                    <td><c:out value="${place.getUserName()}" /></td>
-                    <td><c:out value="${place.getFirstName()}" /></td>
-                    <td><c:out value="${place.getLastName()}" /></td>
-                    <td><c:out value="${place.getUserId()}" /></td>
+                    <td><c:out value="${place.getPlaceId()}" /></td>
+                    <td><c:out value="${place.getLatitude()}" /></td>
+                    <td><c:out value="${place.getLongitude()}" /></td>
                     <td><c:out value="${place.getState()}" /></td>
-                    <td><c:out value="${place.getUserLevel().name()}" /></td>
+                    <td><c:out value="${place.getDistance()}" /></td>
+                    <td><a href="stargazingplace?placeid=<c:out value="${place.getPlaceId()}"/>">View detail</a></td>
 
-
-
-                    <td><a href="userdelete?userid=<c:out value="${place.getUserId()}"/>">Delete</a></td>
-                    <td><a href="userupdate?userid=<c:out value="${place.getUserId()}"/>">Update</a></td>
                 </tr>
             </c:forEach>
        	</table>

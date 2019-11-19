@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import stargazing.model.StarGazingPlaces;
 
 public class StarGazingPlacesDao {
@@ -91,6 +94,105 @@ public class StarGazingPlacesDao {
       }
     }
     return null;
+  }
+
+  public List<StarGazingPlaces> getStargazingPlacesByLatitudeAndLongitude(double latitude,
+      double longitude) throws SQLException {
+    //    1 latitude = 111km.
+    String selectStarGazingPlaces =
+        "SELECT PlaceId, Latitude, Longitude, State, SQRT(POW(Latitude - ?, 2) + POW(Longitude - ?, 2)) AS Total_dist "
+            + " FROM StarGazingPlaces "
+            + " HAVING Total_dist < 50 "
+            + " ORDER BY Total_dist ASC;";
+    List<StarGazingPlaces> starGazingPlacesList = new ArrayList<StarGazingPlaces>();
+    Connection connection = null;
+    PreparedStatement selectStmt = null;
+    ResultSet results = null;
+    try {
+      connection = connectionManager.getConnection();
+      selectStmt = connection.prepareStatement(selectStarGazingPlaces);
+      selectStmt.setDouble(1, latitude);
+      selectStmt.setDouble(2, longitude);
+      results = selectStmt.executeQuery();
+
+      while (results.next()) {
+
+        int placeId = results.getInt("PlaceId");
+        double resultLatitude = results.getDouble("Latitude");
+        double resultLongitude = results.getDouble("Longitude");
+        String state = results.getString("State");
+        double resultDistance = results.getDouble("Total_dist");
+
+        StarGazingPlaces starGazingPlace = new StarGazingPlaces(placeId, resultLatitude, resultLongitude,
+            state, resultDistance);
+        starGazingPlacesList.add(starGazingPlace);
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+      throw e;
+    } finally {
+      if (connection != null) {
+        connection.close();
+      }
+      if (selectStmt != null) {
+        selectStmt.close();
+      }
+      if (results != null) {
+        results.close();
+      }
+    }
+    return starGazingPlacesList;
+  }
+
+
+  public List<StarGazingPlaces> getStargazingPlacesByLatitudeAndLongitude(double latitude,
+      double longitude, double distanceLimit) throws SQLException {
+    //    1 latitude = 111km.
+    String selectStarGazingPlaces =
+        "SELECT PlaceId, Latitude, Longitude, State, SQRT(POW(Latitude - ?, 2) + POW(Longitude - ?, 2)) AS Total_dist "
+            + " FROM StarGazingPlaces "
+            + " HAVING Total_dist < ? "
+            + " ORDER BY Total_dist ASC;";
+    List<StarGazingPlaces> starGazingPlacesList = new ArrayList<StarGazingPlaces>();
+    Connection connection = null;
+    PreparedStatement selectStmt = null;
+    ResultSet results = null;
+    try {
+      connection = connectionManager.getConnection();
+      selectStmt = connection.prepareStatement(selectStarGazingPlaces);
+      selectStmt.setDouble(1, latitude);
+      selectStmt.setDouble(2, longitude);
+      selectStmt.setDouble(3, distanceLimit);
+
+      results = selectStmt.executeQuery();
+
+      while (results.next()) {
+
+    	  int placeId = results.getInt("PlaceId");
+          double resultLatitude = results.getDouble("Latitude");
+          double resultLongitude = results.getDouble("Longitude");
+          String state = results.getString("State");
+          double resultDistance = results.getDouble("Total_dist");
+
+          StarGazingPlaces starGazingPlace = new StarGazingPlaces(placeId, resultLatitude, resultLongitude,
+              state, resultDistance);
+          starGazingPlacesList.add(starGazingPlace);
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+      throw e;
+    } finally {
+      if (connection != null) {
+        connection.close();
+      }
+      if (selectStmt != null) {
+        selectStmt.close();
+      }
+      if (results != null) {
+        results.close();
+      }
+    }
+    return starGazingPlacesList;
   }
 
   public StarGazingPlaces delete(StarGazingPlaces starGazingPlaces) throws SQLException {
