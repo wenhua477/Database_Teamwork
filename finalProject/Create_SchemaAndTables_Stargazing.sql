@@ -53,7 +53,6 @@ CREATE TABLE StarGazingPlaces (
     Latitude decimal (9,5),
     Longitude decimal (9,5),
     State VARCHAR(255),
-    County VARCHAR(255),
     CONSTRAINT pk_StarGazingPlaces_PlaceId PRIMARY KEY (PlaceId)																	
 );
 
