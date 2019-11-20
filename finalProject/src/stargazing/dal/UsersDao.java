@@ -115,6 +115,61 @@ public class UsersDao extends PersonsDao {
     }
     return null;
   }
+  
+  public Users getUserByCredential(String userName, String password) throws SQLException {
+//	  System.out.print(userId * 10);
+    String selectUsers =
+        "SELECT Users.UserId AS UserId, Persons.UserName AS UserName, Persons.Password AS Password,FirstName, LastName, Email, Phone, Street," 
+            +
+            "City, State, Zip, Level " +
+            "FROM Users LEFT OUTER JOIN Persons " +
+            "  ON Users.UserId = Persons.UserId " +
+            "WHERE UserName=? and Password=?;";
+    Connection connection = null;
+    PreparedStatement selectStmt = null;
+    ResultSet results = null;
+    try {
+      connection = connectionManager.getConnection();
+      selectStmt = connection.prepareStatement(selectUsers);
+      selectStmt.setString(1, userName);
+      selectStmt.setString(2,  password);
+      results = selectStmt.executeQuery();
+
+      if (results.next()) {
+
+    	int userId = results.getInt("UserId");
+        String firstName = results.getString("FirstName");
+        String lastName = results.getString("LastName");
+        String email = results.getString("Email");
+        String phone = results.getString("Phone");
+        String street = results.getString("Street");
+        String city = results.getString("City");
+        String state = results.getString("State");
+        String zip = results.getString("Zip");
+//				Restaurants.CuisineType cuisineType = Restaurants.
+//						CuisineType.valueOf(results.getString("CuisineType"));
+        Users.UserLevel level = Users.UserLevel.valueOf(results.getString("Level"));
+
+        Users user = new Users(userId, userName, password, firstName, lastName, email, phone,
+            street, city, state, zip, level);
+        return user;
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+      throw e;
+    } finally {
+      if (connection != null) {
+        connection.close();
+      }
+      if (selectStmt != null) {
+        selectStmt.close();
+      }
+      if (results != null) {
+        results.close();
+      }
+    }
+    return null;
+  }
 
   public Users getUserById(int userId) throws SQLException {
 //	  System.out.print(userId * 10);

@@ -16,14 +16,17 @@
 	<form action="findstargazingplace" method="post">
 		<br/>
 	    <div class="form-group form-inline">
-	      <!-- <label class="text-secondary col-1">Location</label> -->
-	      <label>Latitude</label>
+	      <label class="text-secondary col-1">Location</label>
+	      <input class = "form-control col-4" id="location" name="location" value="${fn:escapeXml(param.location)}">
+	      
+<%-- 	      <label>Latitude</label>
 	      <input class = "form-control" id="latitude" name="latitude" value="${fn:escapeXml(param.latitude)}">
 
 	      <label>Longitude</label>
-	      <input class = "form-control" id="longitude" name="longitude" value="${fn:escapeXml(param.longitude)}">
-	      <label>Radius</label>
-	      <input class = "form-control" id="radius" name="radius" value="${fn:escapeXml(param.radius)}">
+	      <input class = "form-control" id="longitude" name="longitude" value="${fn:escapeXml(param.longitude)}"> --%>
+	      
+	      <label class="text-secondary col-1">Radius</label>
+	      <input class="form-control" id="radius" name="radius" value="${fn:escapeXml(param.radius)}">
 	    </div>
 	    <div class="form-group form-inline offset-md-1">
 			<input class="btn btn-info mr-2" type="submit">
