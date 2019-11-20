@@ -1,6 +1,6 @@
 -- create tables-- 
-CREATE SCHEMA IF NOT EXISTS StargazingApp;
-USE StargazingApp;
+CREATE SCHEMA IF NOT EXISTS PM2;
+USE PM2;
 DROP TABLE IF EXISTS Reviews;
 DROP TABLE IF EXISTS Recommendations;
 DROP TABLE IF EXISTS Footprints;

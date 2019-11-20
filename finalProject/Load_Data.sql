@@ -1,4 +1,4 @@
-USE StargazingApp;
+USE PM2;
 
 LOAD DATA LOCAL INFILE '/Users/yaowenhua/Documents/5200/Database_Teamwork/finalProject/Campsites.csv' INTO TABLE StarGazingPlaces
   FIELDS TERMINATED BY ','
