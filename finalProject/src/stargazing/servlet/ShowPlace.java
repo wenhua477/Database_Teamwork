@@ -51,5 +51,31 @@ public class ShowPlace extends HttpServlet {
         req.getRequestDispatcher("/ShowPlace.jsp").forward(req, resp);
     }
     
+    @Override
+    public void doPost(HttpServletRequest req, HttpServletResponse resp)
+    		throws ServletException, IOException {
+        // Map for storing messages.
+        Map<String, String> messages = new HashMap<String, String>();
+        req.setAttribute("messages", messages);
+
+        StarGazingPlaces place = null;
+
+        String placeIdString = req.getParameter("placeId");
+        if (placeIdString == null || placeIdString.trim().isEmpty()) {
+            messages.put("seccess", "Place enter valid place id.");
+        } else {
+            try {
+                int placeId = Integer.parseInt(placeIdString);  
+                place = stargazingPlacesDao.getStarGazingPlacesById(placeId);               
+            } catch (SQLException e) {
+                e.printStackTrace();
+                throw new IOException(e);
+            }
+            messages.put("success", "Displaying results for place with id being " + placeIdString);      
+        }
+        req.setAttribute("starGazingPlaces", place);
+        
+        req.getRequestDispatcher("/ShowPlace.jsp").forward(req, resp);
+    }
 
 }
