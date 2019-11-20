@@ -15,5 +15,13 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="/Users/BingqingSun/Google Drive/NEU/Current Courses/5200/Install/mysql-connector-java-8.0.18/mysql-connector-java-8.0.18.jar"/>
+	<classpathentry kind="lib" path="/Users/BingqingSun/Google Drive/NEU/Current Courses/5200/Database_Teamwork/finalProject/WebContent/WEB-INF/lib/google-maps-services-0.10.1.jar"/>
+	<classpathentry kind="lib" path="/Users/BingqingSun/Google Drive/NEU/Current Courses/5200/Database_Teamwork/finalProject/WebContent/WEB-INF/lib/gson-2.8.5.jar"/>
+	<classpathentry kind="lib" path="/Users/BingqingSun/Google Drive/NEU/Current Courses/5200/Database_Teamwork/finalProject/WebContent/WEB-INF/lib/okhttp-3.14.2.jar"/>
+	<classpathentry kind="lib" path="/Users/BingqingSun/Google Drive/NEU/Current Courses/5200/Database_Teamwork/finalProject/WebContent/WEB-INF/lib/okio-1.17.2.jar"/>
+	<classpathentry kind="lib" path="/Users/BingqingSun/Google Drive/NEU/Current Courses/5200/Database_Teamwork/finalProject/WebContent/WEB-INF/lib/slf4j-api-1.7.26.jar"/>
+	<classpathentry kind="lib" path="/Users/BingqingSun/Google Drive/NEU/Current Courses/5200/Database_Teamwork/finalProject/WebContent/WEB-INF/lib/slf4j-nop-1.7.25.jar"/>
+	<classpathentry kind="lib" path="/Users/BingqingSun/Google Drive/NEU/Current Courses/5200/Database_Teamwork/finalProject/WebContent/WEB-INF/lib/taglibs-standard-impl-1.2.5.jar"/>
+	<classpathentry kind="lib" path="/Users/BingqingSun/Google Drive/NEU/Current Courses/5200/Database_Teamwork/finalProject/WebContent/WEB-INF/lib/taglibs-standard-spec-1.2.5.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
