@@ -12,18 +12,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;  
+import javax.servlet.http.HttpSession;
 
+import stargazing.dal.PersonsDao;
 import stargazing.dal.UsersDao;
+import stargazing.model.Persons;
 import stargazing.model.Users;
 
 @WebServlet("/login")
 public class Login extends HttpServlet{
-	protected UsersDao usersDao;
+	protected PersonsDao personsDao;
 	
 	@Override
 	public void init() throws ServletException {
-		usersDao = UsersDao.getInstance();
+		personsDao = PersonsDao.getInstance();
 	}
 	
 	@Override
@@ -40,7 +42,7 @@ public class Login extends HttpServlet{
         Map<String, String> messages = new HashMap<String, String>();
         req.setAttribute("messages", messages);
 
-        Users user = null;
+        Persons person = null;
         
         String username = req.getParameter("username");
         String password = req.getParameter("password");
@@ -49,14 +51,14 @@ public class Login extends HttpServlet{
         } else {
         	// Retrieve BlogUsers, and store as a message.
         	try {
-            	user = usersDao.getUserByUserName(username);
+            	person = personsDao.getPersonByCredential(username, password);
             } catch (SQLException e) {
     			e.printStackTrace();
     			throw new IOException(e);
             }
         }
-        req.setAttribute("user", user);
-        if(user == null) {
+        req.setAttribute("person", person);
+        if(person == null) {
         	messages.put("success", "invalid username or passowrd ");
         	req.getRequestDispatcher("/Login.jsp").forward(req, resp);
         } else {
