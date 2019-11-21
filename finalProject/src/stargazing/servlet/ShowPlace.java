@@ -1,5 +1,6 @@
 package stargazing.servlet;
 import stargazing.dal.StarGazingPlacesDao;
+import stargazing.dal.CampsitesDao;
 import stargazing.model.*;
 
 
@@ -17,11 +18,13 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/showplace")
 public class ShowPlace extends HttpServlet {
     
-    protected StarGazingPlacesDao stargazingPlacesDao;
-    
+//    protected StarGazingPlacesDao stargazingPlacesDao;
+    protected CampsitesDao campsitesDao;
+	
     @Override
     public void init() throws ServletException {
-        stargazingPlacesDao = StarGazingPlacesDao.getInstance();
+//        stargazingPlacesDao = StarGazingPlacesDao.getInstance();
+    	campsitesDao = CampsitesDao.getInstance();
     }
     
     @Override
@@ -30,23 +33,24 @@ public class ShowPlace extends HttpServlet {
         Map<String, String> messages = new HashMap<String, String>();
         req.setAttribute("messages", messages);
         
-        StarGazingPlaces place = null;
+        Campsites place = null;
         
-        String placeIdString = req.getParameter("placeId");
+        String placeIdString = req.getParameter("placeid");
         if (placeIdString == null || placeIdString.trim().isEmpty()) {
             messages.put("seccess", "Place enter valid place id.");
         } else {
             try {
-                int placeId = Integer.parseInt(placeIdString);  
-                place = stargazingPlacesDao.getStarGazingPlacesById(placeId);               
+                int placeId = Integer.parseInt(placeIdString);
+                place = campsitesDao.getCampsitesById(placeId);
+                System.out.println(place.getPlaceId());
             } catch (SQLException e) {
                 e.printStackTrace();
                 throw new IOException(e);
             }
-            messages.put("success", "Displaying results for place with id being " + placeIdString);
+            messages.put("success", "Displaying information for place with id being " + placeIdString);
             messages.put("previousPlaceId", placeIdString);       
         }
-        req.setAttribute("starGazingPlaces", place);
+        req.setAttribute("place", place);
         
         req.getRequestDispatcher("/ShowPlace.jsp").forward(req, resp);
     }
@@ -58,22 +62,22 @@ public class ShowPlace extends HttpServlet {
         Map<String, String> messages = new HashMap<String, String>();
         req.setAttribute("messages", messages);
 
-        StarGazingPlaces place = null;
-
-        String placeIdString = req.getParameter("placeId");
+        Campsites place = null;
+        String placeIdString = req.getParameter("placeid");
         if (placeIdString == null || placeIdString.trim().isEmpty()) {
             messages.put("seccess", "Place enter valid place id.");
         } else {
             try {
-                int placeId = Integer.parseInt(placeIdString);  
-                place = stargazingPlacesDao.getStarGazingPlacesById(placeId);               
+                int placeId = Integer.parseInt(placeIdString);
+                place = campsitesDao.getCampsitesById(placeId);
             } catch (SQLException e) {
                 e.printStackTrace();
                 throw new IOException(e);
             }
-            messages.put("success", "Displaying results for place with id being " + placeIdString);      
+            messages.put("success", "Displaying results for place with id being " + placeIdString);
+            messages.put("previousPlaceId", placeIdString);       
         }
-        req.setAttribute("starGazingPlaces", place);
+        req.setAttribute("place", place);
         
         req.getRequestDispatcher("/ShowPlace.jsp").forward(req, resp);
     }

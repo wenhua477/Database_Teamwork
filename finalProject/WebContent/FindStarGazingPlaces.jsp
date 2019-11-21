@@ -57,7 +57,7 @@
                     <td><c:out value="${place.getLongitude()}" /></td>
                     <td><c:out value="${place.getState()}" /></td>
                     <td><c:out value="${place.getDistance()}" /></td>
-                    <td><a href="showplace?placeid=<c:out value="${place.getPlaceId()}"/>">View detail</a></td>
+                    <td><a href="showplace?placeid=<c:out value="${fn:escapeXml(place.getPlaceId())}"/>">View detail</a></td>
 
                 </tr>
             </c:forEach>

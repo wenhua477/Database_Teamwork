@@ -2,7 +2,7 @@ package stargazing.model;
 
 public class Campsites extends StarGazingPlaces {
 
-//  protected int placeId;
+
   protected String name;
   protected String type;
 
@@ -21,15 +21,6 @@ public class Campsites extends StarGazingPlaces {
     this.type = type;
   }
 
-  @Override
-  public int getPlaceId() {
-    return placeId;
-  }
-
-  @Override
-  public void setPlaceId(int placeId) {
-    this.placeId = placeId;
-  }
 
   public String getName() {
     return name;
