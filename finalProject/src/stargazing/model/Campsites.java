@@ -7,16 +7,16 @@ public class Campsites extends StarGazingPlaces {
   protected String type;
 
 
-  public Campsites(double latitude, double longitude, String state, String name,
+  public Campsites(double latitude, double longitude, String state, String fipId, String name,
       String type) {
-    super(latitude, longitude, state);
+    super(latitude, longitude, state, fipId);
     this.name = name;
     this.type = type;
   }
 
-  public Campsites(int placeId, double latitude, double longitude, String state,
+  public Campsites(int placeId, double latitude, double longitude, String state, String fipId,
       String name, String type) {
-    super(placeId, latitude, longitude, state);
+    super(placeId, latitude, longitude, state, fipId);
     this.name = name;
     this.type = type;
   }

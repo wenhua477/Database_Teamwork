@@ -28,7 +28,7 @@ public class CampsitesDao extends StarGazingPlacesDao {
   public Campsites create(Campsites campsites) throws SQLException {
     // Insert into the superclass table first.
     create(new StarGazingPlaces(campsites.getPlaceId(), campsites.getLatitude(),
-        campsites.getLongitude(), campsites.getState()));
+        campsites.getLongitude(), campsites.getState(), campsites.getFipId()));
 
     String insertObservatory = "INSERT INTO Campsites(PlaceId,Name,Type) VALUES(?,?,?);";
     Connection connection = null;
@@ -38,7 +38,6 @@ public class CampsitesDao extends StarGazingPlacesDao {
       insertStmt = connection.prepareStatement(insertObservatory);
       insertStmt.setInt(1, campsites.getPlaceId());
       insertStmt.setString(2, campsites.getName());
-
       insertStmt.setString(3, campsites.getType());
       insertStmt.executeUpdate();
       return campsites;
@@ -57,7 +56,7 @@ public class CampsitesDao extends StarGazingPlacesDao {
 
   public Campsites getCampsitesById(int placeId) throws SQLException {
     String selectCampsites =
-        "SELECT Campsites.PlaceId AS PlaceId, Latitude, Longitude, State,Name,Type " +
+        "SELECT Campsites.PlaceId AS PlaceId, Latitude, Longitude, State, fipId, Name,Type " +
             " FROM Campsites INNER JOIN StarGazingPlaces " +
             " ON Campsites.PlaceId = StarGazingPlaces.PlaceId " +
             " WHERE Campsites.PlaceId=?;";
@@ -74,9 +73,10 @@ public class CampsitesDao extends StarGazingPlacesDao {
         double latitude = results.getDouble("Latitude");
         double longitude = results.getDouble("Longitude");
         String state = results.getString("State");
+        String fipId = results.getString("fipId");
         String name = results.getString("Name");
         String type = results.getString("Type");
-        Campsites campsites = new Campsites(placeId, latitude, longitude, state, name,
+        Campsites campsites = new Campsites(placeId, latitude, longitude, state, fipId, name,
             type);
         return campsites;
       }

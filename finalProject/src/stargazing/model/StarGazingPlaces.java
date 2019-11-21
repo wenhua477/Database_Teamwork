@@ -5,7 +5,16 @@ public class StarGazingPlaces {
   protected double longitude;
   protected String state;
   protected double distance;
+  protected String fipId;
 
+  public String getFipId() {
+	  return fipId;
+  }
+  
+  public void setFipId(String fipId) {
+	  this.fipId = fipId;
+  }
+  
   public int getPlaceId() {
     return placeId;
   }
@@ -46,24 +55,27 @@ public class StarGazingPlaces {
 	    this.distance = distance;
 	  }
 
-  public StarGazingPlaces(double latitude, double longitude, String state) {
+  public StarGazingPlaces(double latitude, double longitude, String state, String fipId) {
     this.latitude = latitude;
     this.longitude = longitude;
     this.state = state;
+    this.fipId = fipId;
   }
 
-  public StarGazingPlaces(int placeId, double latitude, double longitude, String state) {
+  public StarGazingPlaces(int placeId, double latitude, double longitude, String state,  String fipId) {
     this.placeId = placeId;
     this.latitude = latitude;
     this.longitude = longitude;
     this.state = state;
+    this.fipId = fipId;
   }
   
-  public StarGazingPlaces(int placeId, double latitude, double longitude, String state, double distance) {
+  public StarGazingPlaces(int placeId, double latitude, double longitude, String state, String fipId, double distance) {
 	    this.placeId = placeId;
 	    this.latitude = latitude;
 	    this.longitude = longitude;
 	    this.state = state;
+	    this.fipId = fipId;
 	    this.distance = distance;
 	  }
 }
