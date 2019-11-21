@@ -61,6 +61,7 @@ CREATE TABLE Campsites (
     Name VARCHAR(255),
 	Type VARCHAR(255),
     Capacity INT,
+    fips VARCHAR(255),
     CONSTRAINT pk_Campsites_PlaceId PRIMARY KEY (PlaceId),
     CONSTRAINT fk_Campsites_PlaceId
 		FOREIGN KEY (PlaceId)
@@ -130,17 +131,19 @@ CREATE TABLE Footprints(
 CREATE TABLE LocationInfo (
   Latitude decimal (9,5),  
   Longitude decimal (9,5),   
-  Elevation int,  
+  Elevation decimal (7,5),  
   Population VARCHAR(255),
-  Zip VARCHAR(255),
   State VARCHAR(255),
   County VARCHAR(255),
+  fips VARCHAR(255),
   CONSTRAINT pk_LocationInfo_Latitude_Longitude PRIMARY KEY (Latitude,Longitude)
 );
 
 CREATE TABLE CountyInfo (
   CountyName VARCHAR(255),
-  CrimeRate decimal(8,4),  
+  StateName VARCHAR(255),
+  CrimeRate decimal(8,4),
+  fips VARCHAR(255),
   CONSTRAINT pk_CountyInfo_CountyName PRIMARY KEY (CountyName)
 );
 
