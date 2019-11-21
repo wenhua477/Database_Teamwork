@@ -19,32 +19,16 @@
 			<span class="form-text text-info" id="successMessage"><b>${messages.success}</b></span>
 		</div>
 		<br/>
-	
-		<table class="table" border="1">
-            <tr>
-                <th>Place Id</th>
-                <th>Name</th>
-                <th>Latitude</th>
-                <th>Longitude</th>
-                <th>State</th>
-                <th>Capacity</th>
-                <th>Type</th>
-<!--                 <th>Recommendations</th>
-                <th>Rating</th> -->               
-            </tr>
-            <c:forEach items="${places}" var="place" >
-                <tr>
-                    <td><c:out value="${place.getPlaceId()}" /></td>
-                    <td><c:out value="${place.getName()}" /></td>
-                    <td><c:out value="${place.getLatitude()}" /></td>
-                    <td><c:out value="${place.getLongitude()}" /></td>
-                    <td><c:out value="${place.getState()}" /></td>
-                    <td><c:out value="${place.getCapacity()}" /></td>
-                    <td><c:out value="${place.getType()}" /></td>
-                </tr>
-            </c:forEach>
-       	</table>
+		<div>
+		<p><Strong>Place Id:</Strong> ${place.getPlaceId()}</p>
+		<p><Strong>Name:</Strong> ${place.getName()}</p>
+		<p><Strong>Latitude:</Strong> ${place.getLatitude()}</p>
+		<p><Strong>Longitude:</Strong> ${place.getLongitude()}</p>
+		<p><Strong>State:</Strong> ${place.getState()}</p>
+<%-- 		<p><Strong>Capacity:</Strong> ${place.getCapacity()}</p> --%>
+ 		<p><Strong>Type:</Strong> ${place.getType()}</p>	
+		</div>
 	</form>
-	<br/>
+<!-- 	<br/> -->
 </body>
 </html>
