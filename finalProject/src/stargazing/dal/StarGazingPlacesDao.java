@@ -60,7 +60,7 @@ public class StarGazingPlacesDao {
   public StarGazingPlaces getStarGazingPlacesById(int starGazingPlacesId) throws SQLException {
     String selectStarGazingPlaces =
         "SELECT PlaceId, Latitude, Longitude, State " +
-            " FROM StarGazingPlaces WHERE PlacesId=?;";
+            " FROM StarGazingPlaces WHERE PlaceId=?;";
     Connection connection = null;
     PreparedStatement selectStmt = null;
     ResultSet results = null;
@@ -96,53 +96,6 @@ public class StarGazingPlacesDao {
     return null;
   }
 
-  public List<StarGazingPlaces> getStargazingPlacesByLatitudeAndLongitude(double latitude,
-      double longitude) throws SQLException {
-    //    1 latitude = 111km.
-    String selectStarGazingPlaces =
-        "SELECT PlaceId, Latitude, Longitude, State, SQRT(POW(Latitude - ?, 2) + POW(Longitude - ?, 2)) AS Total_dist "
-            + " FROM StarGazingPlaces "
-            + " HAVING Total_dist < 50 "
-            + " ORDER BY Total_dist ASC;";
-    List<StarGazingPlaces> starGazingPlacesList = new ArrayList<StarGazingPlaces>();
-    Connection connection = null;
-    PreparedStatement selectStmt = null;
-    ResultSet results = null;
-    try {
-      connection = connectionManager.getConnection();
-      selectStmt = connection.prepareStatement(selectStarGazingPlaces);
-      selectStmt.setDouble(1, latitude);
-      selectStmt.setDouble(2, longitude);
-      results = selectStmt.executeQuery();
-
-      while (results.next()) {
-
-        int placeId = results.getInt("PlaceId");
-        double resultLatitude = results.getDouble("Latitude");
-        double resultLongitude = results.getDouble("Longitude");
-        String state = results.getString("State");
-        double resultDistance = results.getDouble("Total_dist");
-
-        StarGazingPlaces starGazingPlace = new StarGazingPlaces(placeId, resultLatitude, resultLongitude,
-            state, resultDistance);
-        starGazingPlacesList.add(starGazingPlace);
-      }
-    } catch (SQLException e) {
-      e.printStackTrace();
-      throw e;
-    } finally {
-      if (connection != null) {
-        connection.close();
-      }
-      if (selectStmt != null) {
-        selectStmt.close();
-      }
-      if (results != null) {
-        results.close();
-      }
-    }
-    return starGazingPlacesList;
-  }
 
 
   public List<StarGazingPlaces> getStargazingPlacesByLatitudeAndLongitude(double latitude,
@@ -169,14 +122,17 @@ public class StarGazingPlacesDao {
       while (results.next()) {
 
     	  int placeId = results.getInt("PlaceId");
-          double resultLatitude = results.getDouble("Latitude");
-          double resultLongitude = results.getDouble("Longitude");
-          String state = results.getString("State");
-          double resultDistance = results.getDouble("Total_dist");
-
-          StarGazingPlaces starGazingPlace = new StarGazingPlaces(placeId, resultLatitude, resultLongitude,
-              state, resultDistance);
-          starGazingPlacesList.add(starGazingPlace);
+    	  CampsitesDao campsiteDao = new CampsitesDao();
+	        ObservatoryDao observatoryDao = new ObservatoryDao();
+	        StarGazingPlaces place1 = campsiteDao.getCampsitesById(placeId);
+	        StarGazingPlaces place2 = observatoryDao.getObservatoryById(placeId);
+	        if (place1 != null) {
+	        	place1.setDistance(results.getDouble("Total_dist"));
+	        	starGazingPlacesList.add(place1);
+	        } else if (place2 != null){
+	        	starGazingPlacesList.add(place2);
+	        	place2.setDistance(results.getDouble("Total_dist"));
+	        }
       }
     } catch (SQLException e) {
       e.printStackTrace();

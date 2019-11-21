@@ -102,6 +102,7 @@ public class FindStargazingPlace extends HttpServlet {
 						"Displaying stargazing places near "+ address);
 			}
 		}
+
 		req.setAttribute("places", starGazingPlaces);
 
 		req.getRequestDispatcher("/FindStarGazingPlaces.jsp").forward(req, resp);
@@ -119,8 +120,8 @@ public class FindStargazingPlace extends HttpServlet {
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		double latitude = results[0].geometry.location.lat;
 		double longitude = results[0].geometry.location.lng;
-		System.out.println(latitude);
-		System.out.println(longitude);
+//		System.out.println(latitude);
+//		System.out.println(longitude);
 
 		return new double[] { latitude, longitude };
 	}

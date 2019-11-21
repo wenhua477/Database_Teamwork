@@ -2,7 +2,7 @@ package stargazing.model;
 
 public class Campsites extends StarGazingPlaces {
 
-  protected int placeId;
+//  protected int placeId;
   protected String name;
   protected String type;
 

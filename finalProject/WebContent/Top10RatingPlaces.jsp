@@ -9,35 +9,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<title>Find Stargazing Places</title>
+<title>Top 10 Rating Places</title>
 </head>
 <body class="mr-2 ml-2">
-	<h2>Search for Stargazing Places</h2>
-	<form action="findstargazingplace" method="post">
-		<br/>
-	    <div class="form-group form-inline">
-	      <label class="text-secondary col-1">Location</label>
-	      <input class = "form-control col-4" id="location" name="location" value="${fn:escapeXml(param.location)}">      
-	      <label class="text-secondary col-1">Radius</label>
-	      <input class="form-control" id="radius" name="radius" value="${fn:escapeXml(param.radius)}">
-	    </div>
-	    <div class="form-group form-inline offset-md-1">
-			<input class="btn btn-info mr-2" type="submit">
-		</div>
-		<div>
-			<span class="form-text text-info" id="successMessage"><b>${messages.success}</b></span>
-		</div>
-		<BR/>
-		<BR/>
-	<a href="top10visitedplaces"/>>Check Top
-10 Visited Places</a>
-<BR/>
-	<a href="top10recommendedplaces"/>>Check Top
-10 Recommended Places</a>
-<BR/>
-	<a href="top10ratingplaces"/>>Check Top
-10 Rating Places</a>
-<BR/>
 
 		<BR/>
 		<table class="table" border="1">
@@ -57,7 +31,7 @@
                     <td><c:out value="${place.getLongitude()}" /></td>
                     <td><c:out value="${place.getState()}" /></td>
                     <td><c:out value="${place.getDistance()}" /></td>
-                    <td><a href="stargazingplace?placeid=<c:out value="${place.getPlaceId()}"/>">View detail</a></td>
+                    <td><a href="showplace?placeid=<c:out value="${place.getPlaceId()}"/>">View detail</a></td>
 
                 </tr>
             </c:forEach>

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import stargazing.model.Reviews;
+import stargazing.model.StarGazingPlaces;
 
 public class ReviewsDao {
 
@@ -55,6 +56,53 @@ public class ReviewsDao {
         insertStmt.close();
       }
     }
+  }
+  
+  public List<StarGazingPlaces> getTop10Rated()throws SQLException{
+	  String selectPlaceIds =
+		        "SELECT PlaceId, AVG(Rating) AS CNT "
+		            + " FROM Reviews "
+		            + " GROUP BY PlaceId"
+		            + " ORDER BY CNT DESC " 
+		            + " LIMIT 10;";
+		    List<StarGazingPlaces> starGazingPlacesList = new ArrayList<StarGazingPlaces>();
+		    Connection connection = null;
+		    PreparedStatement selectStmt = null;
+		    ResultSet results = null;
+		    try {
+		      connection = connectionManager.getConnection();
+		      selectStmt = connection.prepareStatement(selectPlaceIds);
+		      results = selectStmt.executeQuery();
+
+		      while (results.next()) {
+
+		        int placeId = results.getInt("PlaceId");
+		
+		        CampsitesDao campsiteDao = new CampsitesDao();
+		        ObservatoryDao observatoryDao = new ObservatoryDao();
+		        StarGazingPlaces place1 = campsiteDao.getCampsitesById(placeId);
+		        StarGazingPlaces place2 = observatoryDao.getObservatoryById(placeId);
+		        if (place1 != null) {
+		        	starGazingPlacesList.add(place1);
+		        } else if (place2 != null){
+		        	starGazingPlacesList.add(place2);
+		        }
+		      }
+		    } catch (SQLException e) {
+		      e.printStackTrace();
+		      throw e;
+		    } finally {
+		      if (connection != null) {
+		        connection.close();
+		      }
+		      if (selectStmt != null) {
+		        selectStmt.close();
+		      }
+		      if (results != null) {
+		        results.close();
+		      }
+		    }
+		    return starGazingPlacesList;
   }
 
   public Reviews updateContent(Reviews review, String newContent) throws SQLException {
