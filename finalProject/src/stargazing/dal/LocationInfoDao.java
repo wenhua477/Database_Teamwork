@@ -60,6 +60,51 @@ public class LocationInfoDao {
   }
 
 
+  
+  public LocationInfo getLocationInfoByFips(String fip) throws SQLException {
+	    String selectLocalInfo =
+	        "SELECT *  " +
+	            " FROM LocationInfo  " +
+	            " WHERE fips=? ;";
+	    Connection connection = null;
+	    PreparedStatement selectStmt = null;
+	    ResultSet results = null;
+	    try {
+	      connection = connectionManager.getConnection();
+	      selectStmt = connection.prepareStatement(selectLocalInfo);
+	      selectStmt.setString(1, fip);
+	      results = selectStmt.executeQuery();
+	      if (results.next()) {
+	    	Double latitude = results.getDouble("Latitude");
+	    	Double longitude = results.getDouble("Longitude");
+	        int elevation = results.getInt("Elevation");
+	        String population = results.getString("Population");
+	        String state = results.getString("State");
+	        String county = results.getString("County");
+	        //String fipRes = results.getString("fips");
+	        LocationInfo locationInfo = new LocationInfo(latitude, longitude, elevation, population,
+	            state, county, fip);
+	        return locationInfo;
+	      }
+	    } catch (SQLException e) {
+	      e.printStackTrace();
+	      throw e;
+	    } finally {
+	      if (connection != null) {
+	        connection.close();
+	      }
+	      if (selectStmt != null) {
+	        selectStmt.close();
+	      }
+	      if (results != null) {
+	        results.close();
+	      }
+	    }
+	    return null;
+	  }
+
+  
+  
   public LocationInfo getLocationInfoByLatitudeAndLongitude(double latitude, double longitude)
       throws SQLException {
     String selectCampsites =

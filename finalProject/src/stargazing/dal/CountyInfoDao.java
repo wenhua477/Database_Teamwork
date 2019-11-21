@@ -52,6 +52,52 @@ protected ConnectionManager connectionManager;
 		}
 	}
 	
+	
+	
+	public CountyInfo getCountyInfoByFips(String fip) throws SQLException {
+		String selectCountyInfo = "SELECT * FROM CountyInfo WHERE fips=?;";
+		Connection connection = null;
+		PreparedStatement selectStmt = null;
+		ResultSet results = null;
+		try {
+			connection = connectionManager.getConnection();
+			selectStmt = connection.prepareStatement(selectCountyInfo);
+			selectStmt.setString(1, fip);
+			
+			results = selectStmt.executeQuery();
+
+			if(results.next()) {
+				
+				String resultCountyName = results.getString("CountyName");
+				String resultStateName = results.getString("StateName");
+				double crimeRate = results.getDouble("CrimeRate");
+				//String fip = results.getString("fips");
+				
+				
+				CountyInfo countyInfo = new CountyInfo(resultCountyName, resultStateName, crimeRate, fip);
+				return countyInfo;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			if(connection != null) {
+				connection.close();
+			}
+			if(selectStmt != null) {
+				selectStmt.close();
+			}
+			if(results != null) {
+				results.close();
+			}
+		}
+		return null;
+	}
+
+	
+	
+	
+	
 	public CountyInfo getCountyInfoByCountyName(String countyName, String stateName) throws SQLException {
 		String selectCountyInfo = "SELECT * FROM CountyInfo WHERE CountyName=? AND StateName =?;";
 		Connection connection = null;
