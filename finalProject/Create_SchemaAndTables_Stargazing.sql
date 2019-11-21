@@ -144,6 +144,6 @@ CREATE TABLE CountyInfo (
   StateName VARCHAR(255),
   CrimeRate decimal(8,4),
   fips VARCHAR(255),
-  CONSTRAINT pk_CountyInfo_CountyName PRIMARY KEY (CountyName)
+  CONSTRAINT pk_CountyInfo_CountyName_StateName PRIMARY KEY (CountyName,StateName)
 );
 

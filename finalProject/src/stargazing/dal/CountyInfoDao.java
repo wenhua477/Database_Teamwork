@@ -23,7 +23,7 @@ protected ConnectionManager connectionManager;
 	
 	public CountyInfo create(CountyInfo countyInfo)throws SQLException {
 		
-		String insertCountyInfo = "INSERT INTO CountyInfo(CountyName, CrimeRate) VALUES(?,?);";
+		String insertCountyInfo = "INSERT INTO CountyInfo(CountyName, StateName, CrimeRate, fips) VALUES(?,?,?,?);";
 		Connection connection = null;
 		PreparedStatement insertStmt = null;
 		try {
@@ -31,7 +31,9 @@ protected ConnectionManager connectionManager;
 			insertStmt = connection.prepareStatement(insertCountyInfo);
 			
 			insertStmt.setString(1, countyInfo.getCountyName());
-			insertStmt.setDouble(2, countyInfo.getCrimeRate());
+			insertStmt.setString(2, countyInfo.getStateName());
+			insertStmt.setDouble(3, countyInfo.getCrimeRate());
+			insertStmt.setString(4, countyInfo.getFips());
 			
 			insertStmt.executeUpdate();
 			
@@ -50,8 +52,8 @@ protected ConnectionManager connectionManager;
 		}
 	}
 	
-	public CountyInfo getCountyInfoByCountyName(String countyName) throws SQLException {
-		String selectCountyInfo = "SELECT * FROM CountyInfo WHERE CountyName=?;";
+	public CountyInfo getCountyInfoByCountyName(String countyName, String stateName) throws SQLException {
+		String selectCountyInfo = "SELECT * FROM CountyInfo WHERE CountyName=? AND StateName =?;";
 		Connection connection = null;
 		PreparedStatement selectStmt = null;
 		ResultSet results = null;
@@ -59,15 +61,19 @@ protected ConnectionManager connectionManager;
 			connection = connectionManager.getConnection();
 			selectStmt = connection.prepareStatement(selectCountyInfo);
 			selectStmt.setString(1, countyName);
-
+			selectStmt.setString(2, stateName);
+			
 			results = selectStmt.executeQuery();
 
 			if(results.next()) {
+				
 				String resultCountyName = results.getString("CountyName");
+				String resultStateName = results.getString("StateName");
 				double crimeRate = results.getDouble("CrimeRate");
+				String fip = results.getString("fips");
 				
 				
-				CountyInfo countyInfo = new CountyInfo(resultCountyName, crimeRate);
+				CountyInfo countyInfo = new CountyInfo(resultCountyName, resultStateName, crimeRate, fip);
 				return countyInfo;
 			}
 		} catch (SQLException e) {
@@ -89,7 +95,7 @@ protected ConnectionManager connectionManager;
 
 	
 	public CountyInfo delete(CountyInfo countyInfo)  throws SQLException{
-		String deleteCountyInfo = "DELETE FROM CountyInfo WHERE CountyName=?;";
+		String deleteCountyInfo = "DELETE FROM CountyInfo WHERE CountyName=? AND StateName =?;";
 		Connection connection = null;
 		PreparedStatement deleteStmt = null;
 		try {
@@ -97,6 +103,7 @@ protected ConnectionManager connectionManager;
 			deleteStmt = connection.prepareStatement(deleteCountyInfo);
 			
 			deleteStmt.setString(1, countyInfo.getCountyName());
+			deleteStmt.setString(2, countyInfo.getStateName());
 			deleteStmt.executeUpdate();
 			return null;
 		} catch (SQLException e) {

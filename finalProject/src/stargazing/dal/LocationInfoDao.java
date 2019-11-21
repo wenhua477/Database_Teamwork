@@ -28,7 +28,7 @@ public class LocationInfoDao {
     // Insert into the superclass table first.
 
     String insertLocationInfo =
-        "INSERT INTO LocationInfo(Latitude,Longitude,Elevation,Population,Zip, State, County) "
+        "INSERT INTO LocationInfo(Latitude,Longitude,Elevation,Population, State, County, fips) "
             + "  VALUES(?,?,?,?,?,?,?);";
     Connection connection = null;
     PreparedStatement insertStmt = null;
@@ -40,9 +40,9 @@ public class LocationInfoDao {
       insertStmt.setDouble(2, locationInfo.getLongitude());
       insertStmt.setInt(3, locationInfo.getElevation());
       insertStmt.setString(4, locationInfo.getPopulation());
-      insertStmt.setString(5, locationInfo.getZip());
-      insertStmt.setString(6, locationInfo.getState());
-      insertStmt.setString(7, locationInfo.getCounty());
+      insertStmt.setString(5, locationInfo.getState());
+      insertStmt.setString(6, locationInfo.getCounty());
+      insertStmt.setString(7, locationInfo.getFips());
 
       insertStmt.executeUpdate();
       return locationInfo;
@@ -78,11 +78,12 @@ public class LocationInfoDao {
       if (results.next()) {
         int elevation = results.getInt("Elevation");
         String population = results.getString("Population");
-        String zip = results.getString("Zip");
+        
         String state = results.getString("State");
         String county = results.getString("County");
+        String fip = results.getString("fips");
         LocationInfo locationInfo = new LocationInfo(latitude, longitude, elevation, population,
-            zip, state, county);
+            state, county, fip);
         return locationInfo;
       }
     } catch (SQLException e) {

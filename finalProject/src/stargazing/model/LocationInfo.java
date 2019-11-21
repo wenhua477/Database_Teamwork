@@ -4,19 +4,20 @@ public class LocationInfo {
 	protected double longitude;
 	protected int elevation;
 	protected String population;
-	protected String zip;
 	protected String state;
 	protected String county;
+	protected String fips;
 	
-	public LocationInfo(double latitude, double longitude, int elevation, String population, String zip, String state,
-			String county) {
+	
+	public LocationInfo(double latitude, double longitude, int elevation, String population,  String state,
+			String county, String fips) {
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.elevation = elevation;
 		this.population = population;
-		this.zip = zip;
 		this.state = state;
 		this.county = county;
+		this.fips= fips;
 	}
 	public double getLatitude() {
 		return latitude;
@@ -42,12 +43,6 @@ public class LocationInfo {
 	public void setPopulation(String population) {
 		this.population = population;
 	}
-	public String getZip() {
-		return zip;
-	}
-	public void setZip(String zip) {
-		this.zip = zip;
-	}
 	public String getState() {
 		return state;
 	}
@@ -60,6 +55,11 @@ public class LocationInfo {
 	public void setCounty(String county) {
 		this.county = county;
 	}
-	
-	
+	public String getFips() {
+		return fips;
+	}
+	public void setFips(String fips) {
+		this.fips = fips;
+	}
+
 }
