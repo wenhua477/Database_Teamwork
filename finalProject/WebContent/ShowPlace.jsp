@@ -25,7 +25,7 @@
 		<p><Strong>Latitude:</Strong> ${place.getLatitude()}</p>
 		<p><Strong>Longitude:</Strong> ${place.getLongitude()}</p>
 		<p><Strong>State:</Strong> ${place.getState()}</p>
-		<p><Strong>fipId:</Strong> ${place.getFipId()}</p>
+ 		<p><Strong>fipId:</Strong> ${place.getFips()}</p>
  		<p><Strong>Type:</Strong> ${place.getType()}</p>
 		</div>
 	</form>

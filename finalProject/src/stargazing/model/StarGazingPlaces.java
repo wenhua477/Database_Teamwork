@@ -5,14 +5,14 @@ public class StarGazingPlaces {
   protected double longitude;
   protected String state;
   protected double distance;
-  protected String fipId;
+  protected String fips;
 
-  public String getFipId() {
-	  return fipId;
+  public String getFips() {
+	  return fips;
   }
   
-  public void setFipId(String fipId) {
-	  this.fipId = fipId;
+  public void setFips(String fipId) {
+	  this.fips = fipId;
   }
   
   public int getPlaceId() {
@@ -55,27 +55,26 @@ public class StarGazingPlaces {
 	    this.distance = distance;
 	  }
 
-  public StarGazingPlaces(double latitude, double longitude, String state, String fipId) {
+  public StarGazingPlaces(double latitude, double longitude, String state, String fips) {
     this.latitude = latitude;
     this.longitude = longitude;
     this.state = state;
-    this.fipId = fipId;
+    this.fips = fips;
   }
 
-  public StarGazingPlaces(int placeId, double latitude, double longitude, String state,  String fipId) {
+  public StarGazingPlaces(int placeId, double latitude, double longitude, String state,  String fips) {
     this.placeId = placeId;
     this.latitude = latitude;
     this.longitude = longitude;
     this.state = state;
-    this.fipId = fipId;
+    this.fips = fips;
   }
   
-  public StarGazingPlaces(int placeId, double latitude, double longitude, String state, String fipId, double distance) {
+  public StarGazingPlaces(int placeId, double latitude, double longitude, String state, double distance) {
 	    this.placeId = placeId;
 	    this.latitude = latitude;
 	    this.longitude = longitude;
 	    this.state = state;
-	    this.fipId = fipId;
 	    this.distance = distance;
 	  }
 }

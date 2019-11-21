@@ -28,7 +28,7 @@ public class ObservatoryDao extends StarGazingPlacesDao {
   public Observatory create(Observatory observatory) throws SQLException {
     // Insert into the superclass table first.
     create(new StarGazingPlaces(observatory.getPlaceId(), observatory.getLatitude(),
-        observatory.getLongitude(), observatory.getState(), observatory.getFipId()));
+        observatory.getLongitude(), observatory.getState(), observatory.getFips()));
 
     String insertObservatory = "INSERT INTO Observatory(PlaceId,Price,OpenHour) VALUES(?,?,?);";
     Connection connection = null;
@@ -56,7 +56,7 @@ public class ObservatoryDao extends StarGazingPlacesDao {
 
   public Observatory getObservatoryById(int placeId) throws SQLException {
     String selectObservatory =
-        "SELECT Observatory.PlaceId AS PlaceId, Latitude, Longitude, State, fipId, Price,OpenHour " +
+        "SELECT Observatory.PlaceId AS PlaceId, Latitude, Longitude, State, fips, Price,OpenHour " +
             " FROM Observatory INNER JOIN StarGazingPlaces " +
             " ON Observatory.PlaceId = StarGazingPlaces.PlaceId " +
             " WHERE Observatory.PlaceId=?;";
@@ -73,10 +73,10 @@ public class ObservatoryDao extends StarGazingPlacesDao {
         double latitude = results.getDouble("Latitude");
         double longitude = results.getDouble("Longitude");
         String state = results.getString("State");
-        String fipId = results.getString("fipId");
+        String fips = results.getString("fips");
         double price = results.getDouble("Price");
         String openHour = results.getString("OpenHour");
-        Observatory observatory = new Observatory(placeId, latitude, longitude, state, fipId, price,
+        Observatory observatory = new Observatory(placeId, latitude, longitude, state, fips, price,
             openHour);
         return observatory;
       }

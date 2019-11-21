@@ -4,16 +4,16 @@ public class Observatory extends StarGazingPlaces {
   protected double price;
   protected String openHour;
 
-  public Observatory(double latitude, double longitude, String state, String fipId, double price,
+  public Observatory(double latitude, double longitude, String state, String fips, double price,
       String openHour) {
-    super(latitude, longitude, state, fipId);
+    super(latitude, longitude, state, fips);
     this.price = price;
     this.openHour = openHour;
   }
 
-  public Observatory(int placeId, double latitude, double longitude, String state, String fipId, double price,
+  public Observatory(int placeId, double latitude, double longitude, String state, String fips, double price,
       String openHour) {
-    super(placeId, latitude, longitude, state, fipId);
+    super(placeId, latitude, longitude, state, fips);
     this.price = price;
     this.openHour = openHour;
   }

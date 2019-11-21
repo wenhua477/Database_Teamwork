@@ -29,7 +29,7 @@ public class StarGazingPlacesDao {
 
   public StarGazingPlaces create(StarGazingPlaces starGazingPlace) throws SQLException {
     String insertStarGazingPlaces =
-        "INSERT INTO StarGazingPlaces(PlaceId, Latitude, Longitude, State, fipId) " +
+        "INSERT INTO StarGazingPlaces(PlaceId, Latitude, Longitude, State, fips) " +
             " VALUES(?,?,?,?,?);";
     Connection connection = null;
     PreparedStatement insertStmt = null;
@@ -41,7 +41,7 @@ public class StarGazingPlacesDao {
       insertStmt.setDouble(2, starGazingPlace.getLatitude());
       insertStmt.setDouble(3, starGazingPlace.getLongitude());
       insertStmt.setString(4, starGazingPlace.getState());
-      insertStmt.setString(5, starGazingPlace.getFipId());
+      insertStmt.setString(5, starGazingPlace.getFips());
 
       insertStmt.executeUpdate();
       return starGazingPlace;
@@ -60,7 +60,7 @@ public class StarGazingPlacesDao {
 
   public StarGazingPlaces getStarGazingPlacesById(int starGazingPlacesId) throws SQLException {
     String selectStarGazingPlaces =
-        "SELECT PlaceId, Latitude, Longitude, State, fipId " +
+        "SELECT PlaceId, Latitude, Longitude, State, fips " +
             " FROM StarGazingPlaces WHERE PlaceId=?;";
     Connection connection = null;
     PreparedStatement selectStmt = null;
@@ -76,9 +76,9 @@ public class StarGazingPlacesDao {
         double latitude = results.getDouble("Latitude");
         double longitude = results.getDouble("Longitude");
         String state = results.getString("State");
-        String fipId = results.getString("fipId");
+        String fips = results.getString("fips");
         StarGazingPlaces starGazingPlace = new StarGazingPlaces(placeId, latitude, longitude,
-            state, fipId);
+            state, fips);
         return starGazingPlace;
       }
     } catch (SQLException e) {

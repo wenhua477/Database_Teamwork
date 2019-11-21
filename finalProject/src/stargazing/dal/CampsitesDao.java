@@ -28,7 +28,7 @@ public class CampsitesDao extends StarGazingPlacesDao {
   public Campsites create(Campsites campsites) throws SQLException {
     // Insert into the superclass table first.
     create(new StarGazingPlaces(campsites.getPlaceId(), campsites.getLatitude(),
-        campsites.getLongitude(), campsites.getState(), campsites.getFipId()));
+        campsites.getLongitude(), campsites.getState(), campsites.getFips()));
 
     String insertObservatory = "INSERT INTO Campsites(PlaceId,Name,Type) VALUES(?,?,?);";
     Connection connection = null;
@@ -56,7 +56,7 @@ public class CampsitesDao extends StarGazingPlacesDao {
 
   public Campsites getCampsitesById(int placeId) throws SQLException {
     String selectCampsites =
-        "SELECT Campsites.PlaceId AS PlaceId, Latitude, Longitude, State, fipId, Name,Type " +
+        "SELECT Campsites.PlaceId AS PlaceId, Latitude, Longitude, State, fips, Name,Type " +
             " FROM Campsites INNER JOIN StarGazingPlaces " +
             " ON Campsites.PlaceId = StarGazingPlaces.PlaceId " +
             " WHERE Campsites.PlaceId=?;";
@@ -73,10 +73,10 @@ public class CampsitesDao extends StarGazingPlacesDao {
         double latitude = results.getDouble("Latitude");
         double longitude = results.getDouble("Longitude");
         String state = results.getString("State");
-        String fipId = results.getString("fipId");
+        String fips = results.getString("fips");
         String name = results.getString("Name");
         String type = results.getString("Type");
-        Campsites campsites = new Campsites(placeId, latitude, longitude, state, fipId, name,
+        Campsites campsites = new Campsites(placeId, latitude, longitude, state, fips, name,
             type);
         return campsites;
       }
