@@ -73,6 +73,7 @@ CREATE TABLE Observatory (
 	PlaceId INT AUTO_INCREMENT,
     Price DECIMAL(4,2),
     OpenHour VARCHAR(255),
+    fips VARCHAR(255),
     CONSTRAINT pk_Observatory_PlaceId PRIMARY KEY (PlaceId),
     CONSTRAINT fk_Observatory_PlaceId
 		FOREIGN KEY (PlaceId)

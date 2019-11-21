@@ -29,6 +29,7 @@
  		<p><Strong>Type:</Strong> ${place.getType()}</p>
 		</div>
 	</form>
+	<a href = "instantWeather">Check weather information</a>	
 <!-- 	<br/> -->
 </body>
 </html>
