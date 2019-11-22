@@ -1,6 +1,8 @@
 package stargazing.servlet;
 import stargazing.dal.StarGazingPlacesDao;
 import stargazing.dal.CampsitesDao;
+import stargazing.dal.LocationInfoDao;
+import stargazing.dal.CountyInfoDao;
 import stargazing.model.*;
 
 
@@ -20,11 +22,15 @@ public class ShowPlace extends HttpServlet {
     
 //    protected StarGazingPlacesDao stargazingPlacesDao;
     protected CampsitesDao campsitesDao;
-	
+    protected LocationInfoDao locationInfoDao;
+    protected CountyInfoDao countyInfoDao;
+    
     @Override
     public void init() throws ServletException {
 //        stargazingPlacesDao = StarGazingPlacesDao.getInstance();
     	campsitesDao = CampsitesDao.getInstance();
+    	locationInfoDao = LocationInfoDao.getInstance();
+    	countyInfoDao = CountyInfoDao.getInstance();
     }
     
     @Override
@@ -34,6 +40,8 @@ public class ShowPlace extends HttpServlet {
         req.setAttribute("messages", messages);
         
         Campsites place = null;
+        LocationInfo location = null;
+        CountyInfo county = null;
         
         String placeIdString = req.getParameter("placeid");
         if (placeIdString == null || placeIdString.trim().isEmpty()) {
@@ -42,7 +50,12 @@ public class ShowPlace extends HttpServlet {
             try {
                 int placeId = Integer.parseInt(placeIdString);
                 place = campsitesDao.getCampsitesById(placeId);
-                System.out.println(place.getPlaceId());
+         
+                String fips = place.getFips();
+                location = locationInfoDao.getLocationInfoByFips(fips);
+                System.out.println(fips);
+                county = countyInfoDao.getCountyInfoByFips(fips);
+                System.out.println(county);
             } catch (SQLException e) {
                 e.printStackTrace();
                 throw new IOException(e);
@@ -51,6 +64,8 @@ public class ShowPlace extends HttpServlet {
             messages.put("previousPlaceId", placeIdString);       
         }
         req.setAttribute("place", place);
+        req.setAttribute("location", location);
+        req.setAttribute("county", county);
         
         req.getRequestDispatcher("/ShowPlace.jsp").forward(req, resp);
     }
