@@ -29,7 +29,7 @@
  		<p><Strong>Type:</Strong> ${place.getType()}</p>
 		</div>
 	</form>
-	<a href = "https://api.openweathermap.org/data/2.5/weather?lat=${place.getLatitude()}&lon=${place.getLongitude()}&appid=bb3b5625ca6815def6f74fb8159f4ab8" >Check weather information</a>	
+	<a href = "instantWeather" >Check weather information</a>	
 <!-- 	<br/> -->
 </body> 
 </html>
