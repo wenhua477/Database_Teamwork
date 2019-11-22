@@ -67,7 +67,15 @@ public class Login extends HttpServlet{
         	// set session
         	HttpSession session = req.getSession();  
             session.setAttribute("username",username); 
-        	req.getRequestDispatcher("/FindStarGazingPlaces.jsp").forward(req, resp);
+            session.setAttribute("userid", person.getUserId());
+			session.setAttribute("Logstate","Log Out");
+			session.setAttribute("Logstatehref","logout");
+            if(username.equals("admin")) {
+            	req.getRequestDispatcher("/FindUsers.jsp").forward(req, resp);
+            } else {
+            	req.getRequestDispatcher("/FindStarGazingPlaces.jsp").forward(req, resp);
+            }
+        	
         }
         
         
