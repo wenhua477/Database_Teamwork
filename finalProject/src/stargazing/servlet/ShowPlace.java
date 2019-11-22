@@ -29,6 +29,8 @@ public class ShowPlace extends HttpServlet {
     protected CountyInfoDao countyInfoDao;
     protected ReviewsDao reviewsDao;
 
+
+
     @Override
     public void init() throws ServletException {
 //        stargazingPlacesDao = StarGazingPlacesDao.getInstance();
@@ -48,6 +50,7 @@ public class ShowPlace extends HttpServlet {
         LocationInfo location = null;
         CountyInfo county = null;
         List<Reviews> reviews = new ArrayList<Reviews>();
+
         
         String placeIdString = req.getParameter("placeid");
         if (placeIdString == null || placeIdString.trim().isEmpty()) {
@@ -59,9 +62,13 @@ public class ShowPlace extends HttpServlet {
          
                 String fips = place.getFips();
                 location = locationInfoDao.getLocationInfoByFips(fips);
+<<<<<<< HEAD
 //                System.out.println(fips);
                 county = countyInfoDao.getCountyInfoByFips(fips);
 //                System.out.println(county);
+=======
+                county = countyInfoDao.getCountyInfoByFips(fips);
+>>>>>>> show comment
                 reviews = reviewsDao.getReviewsByPlaceId(placeId);
             } catch (SQLException e) {
                 e.printStackTrace();
