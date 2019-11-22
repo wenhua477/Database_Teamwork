@@ -1,13 +1,13 @@
 USE PM2;
 
-LOAD DATA LOCAL INFILE '/Users/BingqingSun/Google Drive/NEU/Current Courses/5200/Database_Teamwork/finalProject/Campsites_New.csv' INTO TABLE StarGazingPlaces
+LOAD DATA LOCAL INFILE '/Users/BingqingSun/Google Drive/NEU/Current Courses/5200/Database_Teamwork/finalProject/Campsites_new.csv' INTO TABLE StarGazingPlaces
   FIELDS TERMINATED BY ','
   LINES TERMINATED BY '\n'
   IGNORE 1 LINES
   (@col1,@col2,@dummy, @col4) set Latitude=@col1,Longitude=@col2,State=@col4;
   
   
-LOAD DATA LOCAL INFILE '/Users/BingqingSun/Google Drive/NEU/Current Courses/5200/Database_Teamwork/finalProject/Campsites_New.csv' INTO TABLE Campsites
+LOAD DATA LOCAL INFILE '/Users/BingqingSun/Google Drive/NEU/Current Courses/5200/Database_Teamwork/finalProject/Campsites_new.csv' INTO TABLE Campsites
   FIELDS TERMINATED BY ','
   LINES TERMINATED BY '\n'
   IGNORE 1 LINES
