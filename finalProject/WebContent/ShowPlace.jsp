@@ -27,6 +27,9 @@
 		<p><Strong>State:</Strong> ${place.getState()}</p>
  		<p><Strong>fipId:</Strong> ${place.getFips()}</p>
  		<p><Strong>Type:</Strong> ${place.getType()}</p>
+ 		<p><Strong>Population:</Strong> ${location.getPopulation()}</p>
+ 		<p><Strong>Elevation:</Strong> ${location.getElevation()}</p>
+ 		<p><Strong>Crime Rate:</Strong> ${county.getCrimeRate()}</p>
 		</div>
 	</form>
 	<a href = "instantWeather" >Check weather information</a>	

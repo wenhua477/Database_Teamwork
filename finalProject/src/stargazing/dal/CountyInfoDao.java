@@ -71,7 +71,7 @@ protected ConnectionManager connectionManager;
 				String resultCountyName = results.getString("CountyName");
 				String resultStateName = results.getString("StateName");
 				double crimeRate = results.getDouble("CrimeRate");
-				//String fip = results.getString("fips");
+//				String fip = results.getString("fips");
 				
 				
 				CountyInfo countyInfo = new CountyInfo(resultCountyName, resultStateName, crimeRate, fip);
