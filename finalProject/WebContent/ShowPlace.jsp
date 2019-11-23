@@ -64,7 +64,7 @@
 				<Strong>Crime Rate:</Strong> ${county.getCrimeRate()}
 			</p>
 		</div>
-		<a href="instantWeather">Check weather information</a>
+		<a href="CurrentWeather?placeid=<c:out value="${place.getPlaceId()}"/>">Check weather information</a>
 		<!-- 	<br/> -->
 
 
