@@ -28,11 +28,12 @@
 	While Beauty marches by,
 	And wonder at the Law
 	Which wears such majesty.</p>
-	</div>
-		<br>
-	<div class = "author">
+	<br>
+	<div  id = "author">
 	 -Bliss Carman
 	</div>
+	</div>
+
 
 	<a href="findstargazingplace"> 		
 	    <button class="corner-button">

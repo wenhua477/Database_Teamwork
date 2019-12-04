@@ -119,12 +119,12 @@ body {
 	text-shadow: 0.2em 0 0.5em #5eff00;
 }
  
-.author {
+#author {
 	font-family: 'Indie Flower', cursive; 
 	color: #5cb3ba;
-	position: absolute;
+/* 	position: absolute;
 	  left: 5%;
-	  top: 49%;
+	  top: 49%; */
     font-size:1.1em;
    line-height:130%;
     text-align: right;
