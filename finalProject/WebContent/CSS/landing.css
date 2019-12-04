@@ -1,0 +1,153 @@
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+
+body {
+  background-image: url("http://images6.fanpop.com/image/photos/34500000/WALL-E-wall-e-34551213-2560-1600.jpg");
+  background-size: cover;
+  background-position: center center;
+}
+
+.corner-button {
+  font-family: 'Lato', sans-serif;
+  letter-spacing: .02rem;
+  cursor: pointer;
+  background: transparent;
+  border: 0.5rem solid currentColor;
+  padding: 0.8rem 0.8rem;
+  font-size: 1.8rem;
+  /* color: #06c17f; */
+  color: #5cb3ba;
+  position: absolute;
+  left: 5%;
+  bottom: 5%;
+  
+  transition: color 0.3s;
+}
+.corner-button:hover {
+  color: pink;
+}
+.corner-button:hover::before {
+  width: 0;
+}
+.corner-button:hover::after {
+  height: 0;
+}
+.corner-button:active {
+  border-width: 0.25rem;
+}
+.corner-button span {
+  position: relative;
+  z-index: 2;
+}
+.corner-button::before, .corner-button::after {
+  content: '';
+  position: absolute;
+  background: #023767;
+  z-index: 1;
+  transition: all 0.3s;
+}
+
+.corner-button::before {
+  width: calc(100% - 3rem);
+  height: calc(101% + 1rem);
+  top: -0.5rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.corner-button::after {
+  height: calc(100% - 3rem);
+  width: calc(101% + 1rem);
+  left: -0.5rem;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+
+
+@keyframes imageAnimation { 
+  0% { 
+    opacity: 0; 
+    animation-timing-function: ease-in;
+  }
+  20% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  30% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0
+  }
+}
+
+
+
+.stars {
+ background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png) repeat; 
+ position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    z-index: 0;
+    animation: imageAnimation 2s ease-in-out infinite; 
+}
+
+.pom{
+	font-family: 'Indie Flower', cursive; 
+	/* font-family: 'Shadows Into Light', cursive; */
+	color: #5cb3ba;
+	position: absolute;
+	  left: 5%;
+	  top: 7%;
+    font-size:1.3em;
+   line-height:110%;
+    text-align: center;
+    overflow: hidden;
+    width: 200px;
+	text-shadow: 0.2em 0 0.5em #5eff00;
+}
+ 
+.author {
+	font-family: 'Indie Flower', cursive; 
+	color: #5cb3ba;
+	position: absolute;
+	  left: 5%;
+	  top: 49%;
+    font-size:1.1em;
+   line-height:130%;
+    text-align: right;
+    overflow: hidden;
+    width: 200px;
+	text-shadow: 0.2em 0 0.5em #5eff00;
+}
+}
+
+/* p{
+  animation: textAnimation 30s linear infinite
+} */
+
+@keyframes textAnimation { 
+  0% { 
+    opacity: 0; 
+    animation-timing-function: ease-in;
+  }
+  20% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  90% {
+    opacity: 0
+  }
+}
