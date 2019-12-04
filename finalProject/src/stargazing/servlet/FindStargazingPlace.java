@@ -37,7 +37,7 @@ public class FindStargazingPlace extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();  
-		session.setAttribute("Logstate","Log In");
+//		session.setAttribute("Logstate","Log In");
 		req.getRequestDispatcher("/FindStarGazingPlaces.jsp").forward(req, resp);
 	}
 
