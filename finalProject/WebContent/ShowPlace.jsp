@@ -139,10 +139,17 @@
 			</form>
 		</c:if>
 
+		<!--  add recommendation-->
+		<c:if test="${Logstate == 'Log Out'}">
+			<form action="addrecommendation" method="post">
+					<div class="form-group col-md-2">
+						<input class="btn btn-info mt-4" id="placeid" name="placeid" type="submit" value="${place.getPlaceId()}" />
+					</div>
+			</form>
+		</c:if>
 
-
-		<!-- 	<br/> -->
 	</div>
 
 </body>
+
 </html>

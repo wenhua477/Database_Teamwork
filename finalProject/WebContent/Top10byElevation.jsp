@@ -16,11 +16,9 @@
 		<BR/>
 		<table class="table" border="1">
             <tr>
-                <th>Place Id</th>
                 <th>Latitude</th>
                 <th>Longitude</th>
                 <th>State</th>
-                <th>Distance</th>
 				<th>Population</th>
                 <th>Elevation</th>
                 <th>Detail</th>
@@ -28,17 +26,15 @@
             </tr>
             <c:forEach items="${places}" var="place" >
                 <tr>
-                    <td><c:out value="${place.getPlaceId()}" /></td>
                     <td><c:out value="${place.getLatitude()}" /></td>
                     <td><c:out value="${place.getLongitude()}" /></td>
                     <td><c:out value="${place.getState()}" /></td>
-                    <td><c:out value="${place.getDistance()}" /></td>
                     <td><c:out value="${place.getPopulation()}" /></td>
                     <td><c:out value="${place.getElevation()}" /></td>                   
                     <td><a href="showplace?placeid=<c:out value="${place.getPlaceId()}"/>">View detail</a></td>
 
                 </tr>
-            </c:forEach>
+            </c:forEach> 
        	</table>
 	</form>
 	<br/>

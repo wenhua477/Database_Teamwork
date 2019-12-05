@@ -69,13 +69,32 @@ public class UserUpdate extends HttpServlet {
 				if(user == null) {
 					messages.put("success", "UserId does not exist. No update to perform.");
 				} else {
+					String newUserName = req.getParameter("username");
+					String newFirstName = req.getParameter("firstname");
 					String newLastName = req.getParameter("lastname");
-					if (newLastName == null || newLastName.trim().isEmpty()) {
-						messages.put("success", "Please enter a valid LastName.");
-					} else {
-						user = usersDao.updateLastName(user, newLastName);
-						messages.put("success", "Successfully updated user with id " + userId);
-					}
+					String newEmail = req.getParameter("email");
+					String newPhone = req.getParameter("phone");
+					String newStreet = req.getParameter("street");
+					String newCity = req.getParameter("city");
+					String newState = req.getParameter("state");
+					String newZip = req.getParameter("zip");
+
+//					if (newLastName == null || newLastName.trim().isEmpty()) {
+//						messages.put("success", "Please enter a valid LastName.");
+//					} else {
+					user = usersDao.updateUserName(user, newUserName);
+					user = usersDao.updateFirstname(user, newFirstName);
+					user = usersDao.updateLastName(user, newLastName);
+					user = usersDao.updateEmail(user, newEmail);
+					user = usersDao.updatePhone(user, newPhone);
+					user = usersDao.updateStreet(user, newStreet);
+					user = usersDao.updateCity(user, newCity);
+					user = usersDao.updateState(user, newState);
+					user = usersDao.updateZip(user, newZip);
+
+					
+					messages.put("success", "Successfully updated user with id " + userId);
+//					}
 				}
 				req.setAttribute("user", user);
 			} catch (SQLException e) {

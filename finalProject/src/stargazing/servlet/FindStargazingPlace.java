@@ -99,6 +99,9 @@ public class FindStargazingPlace extends HttpServlet {
 				try {
 					starGazingPlaces = stargazingPlacesDao.getStargazingPlacesByLatitudeAndLongitude(latitude,
 							longitude, r);
+//					stargazingPlacesDao.updateStargazingPlacesByLatitudeAndLongitude(latitude,
+//							longitude, r);
+					
 				} catch (SQLException e) {
 					e.printStackTrace();
 					throw new IOException(e);
@@ -109,7 +112,10 @@ public class FindStargazingPlace extends HttpServlet {
 		}
 
 		req.setAttribute("places", starGazingPlaces);
-
+		session.setAttribute("places", starGazingPlaces);
+		session.setAttribute("lati", latitude);
+		session.setAttribute("longt", longitude);
+		session.setAttribute("radis", r);
 		req.getRequestDispatcher("/FindStarGazingPlaces.jsp").forward(req, resp);
 
 	}

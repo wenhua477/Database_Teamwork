@@ -25,13 +25,13 @@
 	</nav>
 
 	<div class="mr-2 ml-2">
-		<h2>Search for a Stargazing User by FirstName</h2>
+		<h2>Search for a Stargazing User by UserName</h2>
 		<form action="findusers" method="post">
 			<br />
 			<div class="form-group form-inline">
-				<label class="text-secondary mr-2" for="firstname">FirstName</label>
-				<input class="form-control" id="firstname" name="firstname"
-					value="${fn:escapeXml(param.firstname)}"> <input
+				<label class="text-secondary mr-2" for="username">UserName</label>
+				<input class="form-control" id="username" name="username"
+					value="${fn:escapeXml(param.username)}"> <input
 					class="btn btn-info ml-2 mr-2" type="submit">
 			</div>
 			<div>
@@ -39,7 +39,7 @@
 			</div>
 		</form>
 		<br /> <br />
-		<h3>Matching Users</h3>
+		<h3>Matching User</h3>
 		<table class="table" border="1">
 			<tr>
 				<th>UserName</th>
@@ -50,6 +50,7 @@
 				<th>Level</th>
 				<th>Delete User</th>
 				<th>Update User</th>
+				<th>View Detail</th>
 			</tr>
 			<c:forEach items="${users}" var="user">
 				<tr>
@@ -66,6 +67,9 @@
 						href="userdelete?userid=<c:out value="${user.getUserId()}"/>">Delete</a></td>
 					<td><a
 						href="userupdate?userid=<c:out value="${user.getUserId()}"/>">Update</a></td>
+					<td><a
+						href="showuser?userid=<c:out value="${fn:escapeXml(user.getUserId())}"/>">View
+								detail</a></td>
 				</tr>
 			</c:forEach>
 		</table>

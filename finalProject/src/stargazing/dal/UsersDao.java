@@ -227,8 +227,12 @@ public class UsersDao extends PersonsDao {
   }
 
 
+  
 //  updateLastName
 public Users updateLastName(Users user, String newLastName) throws SQLException {
+	if (newLastName == null || newLastName.trim().isEmpty()) {
+		return user;
+	}
   String updateUser = "UPDATE Users SET LastName=? WHERE UserId=?;";
   Connection connection = null;
   PreparedStatement updateStmt = null;
@@ -254,6 +258,246 @@ public Users updateLastName(Users user, String newLastName) throws SQLException 
     }
   }
 }
+
+public Users updateUserName(Users user, String newUserName) throws SQLException {
+		if (newUserName == null || newUserName.trim().isEmpty()) {
+			return user;
+		}
+	  String updateUser = "UPDATE Persons SET UserName=? WHERE UserId=?;";
+	  Connection connection = null;
+	  PreparedStatement updateStmt = null;
+	  try {
+	    connection = connectionManager.getConnection();
+	    updateStmt = connection.prepareStatement(updateUser);
+	    updateStmt.setString(1, newUserName);
+	    updateStmt.setInt(2, user.getUserId());
+	    updateStmt.executeUpdate();
+
+	    // Update the user param before returning to the caller.
+	    user.setUserName(newUserName);
+	    return user;
+	  } catch (SQLException e) {
+	    e.printStackTrace();
+	    throw e;
+	  } finally {
+	    if(connection != null) {
+	      connection.close();
+	    }
+	    if(updateStmt != null) {
+	      updateStmt.close();
+	    }
+	  }
+	}
+
+public Users updateFirstname(Users user, String newFirstname) throws SQLException {
+	if (newFirstname == null || newFirstname.trim().isEmpty()) {
+		return user;
+	}
+  String updateUser = "UPDATE Users SET FirstName=? WHERE UserId=?;";
+  Connection connection = null;
+  PreparedStatement updateStmt = null;
+  try {
+    connection = connectionManager.getConnection();
+    updateStmt = connection.prepareStatement(updateUser);
+    updateStmt.setString(1, newFirstname);
+    updateStmt.setInt(2, user.getUserId());
+    updateStmt.executeUpdate();
+
+    // Update the user param before returning to the caller.
+    user.setFirstName(newFirstname);
+    return user;
+  } catch (SQLException e) {
+    e.printStackTrace();
+    throw e;
+  } finally {
+    if(connection != null) {
+      connection.close();
+    }
+    if(updateStmt != null) {
+      updateStmt.close();
+    }
+  }
+}
+
+public Users updateEmail(Users user, String email) throws SQLException {
+	if (email == null || email.trim().isEmpty()) {
+		return user;
+	}
+  String updateUser = "UPDATE Users SET Email=? WHERE UserId=?;";
+  Connection connection = null;
+  PreparedStatement updateStmt = null;
+  try {
+    connection = connectionManager.getConnection();
+    updateStmt = connection.prepareStatement(updateUser);
+    updateStmt.setString(1, email);
+    updateStmt.setInt(2, user.getUserId());
+    updateStmt.executeUpdate();
+
+    // Update the user param before returning to the caller.
+    user.setEmail(email);
+    return user;
+  } catch (SQLException e) {
+    e.printStackTrace();
+    throw e;
+  } finally {
+    if(connection != null) {
+      connection.close();
+    }
+    if(updateStmt != null) {
+      updateStmt.close();
+    }
+  }
+}
+
+public Users updatePhone(Users user, String phone) throws SQLException {
+	if (phone == null || phone.trim().isEmpty()) {
+		return user;
+	}
+  String updateUser = "UPDATE Users SET Phone=? WHERE UserId=?;";
+  Connection connection = null;
+  PreparedStatement updateStmt = null;
+  try {
+    connection = connectionManager.getConnection();
+    updateStmt = connection.prepareStatement(updateUser);
+    updateStmt.setString(1, phone);
+    updateStmt.setInt(2, user.getUserId());
+    updateStmt.executeUpdate();
+
+    // Update the user param before returning to the caller.
+    user.setPhone(phone);
+    return user;
+  } catch (SQLException e) {
+    e.printStackTrace();
+    throw e;
+  } finally {
+    if(connection != null) {
+      connection.close();
+    }
+    if(updateStmt != null) {
+      updateStmt.close();
+    }
+  }
+}
+
+public Users updateStreet(Users user, String newStreet) throws SQLException {
+	if (newStreet == null || newStreet.trim().isEmpty()) {
+		return user;
+	}
+  String updateUser = "UPDATE Users SET Street=? WHERE UserId=?;";
+  Connection connection = null;
+  PreparedStatement updateStmt = null;
+  try {
+    connection = connectionManager.getConnection();
+    updateStmt = connection.prepareStatement(updateUser);
+    updateStmt.setString(1, newStreet);
+    updateStmt.setInt(2, user.getUserId());
+    updateStmt.executeUpdate();
+
+    // Update the user param before returning to the caller.
+    user.setStreet(newStreet);
+    return user;
+  } catch (SQLException e) {
+    e.printStackTrace();
+    throw e;
+  } finally {
+    if(connection != null) {
+      connection.close();
+    }
+    if(updateStmt != null) {
+      updateStmt.close();
+    }
+  }
+}
+
+public Users updateCity(Users user, String newCity) throws SQLException {
+	if (newCity == null || newCity.trim().isEmpty()) {
+		return user;
+	}
+  String updateUser = "UPDATE Users SET City=? WHERE UserId=?;";
+  Connection connection = null;
+  PreparedStatement updateStmt = null;
+  try {
+    connection = connectionManager.getConnection();
+    updateStmt = connection.prepareStatement(updateUser);
+    updateStmt.setString(1, newCity);
+    updateStmt.setInt(2, user.getUserId());
+    updateStmt.executeUpdate();
+
+    // Update the user param before returning to the caller.
+    user.setCity(newCity);
+    return user;
+  } catch (SQLException e) {
+    e.printStackTrace();
+    throw e;
+  } finally {
+    if(connection != null) {
+      connection.close();
+    }
+    if(updateStmt != null) {
+      updateStmt.close();
+    }
+  }
+}
+
+public Users updateState(Users user, String newState) throws SQLException {
+	if (newState == null || newState.trim().isEmpty()) {
+		return user;
+	}
+  String updateUser = "UPDATE Users SET State=? WHERE UserId=?;";
+  Connection connection = null;
+  PreparedStatement updateStmt = null;
+  try {
+    connection = connectionManager.getConnection();
+    updateStmt = connection.prepareStatement(updateUser);
+    updateStmt.setString(1, newState);
+    updateStmt.setInt(2, user.getUserId());
+    updateStmt.executeUpdate();
+
+    // Update the user param before returning to the caller.
+    user.setState(newState);
+    return user;
+  } catch (SQLException e) {
+    e.printStackTrace();
+    throw e;
+  } finally {
+    if(connection != null) {
+      connection.close();
+    }
+    if(updateStmt != null) {
+      updateStmt.close();
+    }
+  }
+}
+public Users updateZip(Users user, String newZip) throws SQLException {
+	if (newZip == null || newZip.trim().isEmpty()) {
+		return user;
+	}
+  String updateUser = "UPDATE Users SET Zip=? WHERE UserId=?;";
+  Connection connection = null;
+  PreparedStatement updateStmt = null;
+  try {
+    connection = connectionManager.getConnection();
+    updateStmt = connection.prepareStatement(updateUser);
+    updateStmt.setString(1, newZip);
+    updateStmt.setInt(2, user.getUserId());
+    updateStmt.executeUpdate();
+
+    // Update the user param before returning to the caller.
+    user.setZip(newZip);
+    return user;
+  } catch (SQLException e) {
+    e.printStackTrace();
+    throw e;
+  } finally {
+    if(connection != null) {
+      connection.close();
+    }
+    if(updateStmt != null) {
+      updateStmt.close();
+    }
+  }
+}
+
 
   public Users delete(Users user) throws SQLException {
     String deleteUser = "DELETE FROM Users WHERE UserId=?;";

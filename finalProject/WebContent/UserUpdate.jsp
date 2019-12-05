@@ -31,11 +31,54 @@
 					class="form-control" id="userid" name="userid"
 					value="${fn:escapeXml(param.userid)}">
 			</div>
+
+			<div class="form-group form-inline">
+				<label class="text-secondary col-2" for="lastname">New
+					Username</label> <input class="form-control" id="username" name="username"
+					value="">
+			</div>
+			<div class="form-group form-inline">
+				<label class="text-secondary col-2" for="lastname">New
+					FirstName</label> <input class="form-control" id="firstname" name="firstname"
+					value="">
+			</div>
 			<div class="form-group form-inline">
 				<label class="text-secondary col-2" for="lastname">New
 					LastName</label> <input class="form-control" id="lastname" name="lastname"
 					value="">
 			</div>
+			<div class="form-group form-inline">
+				<label class="text-secondary col-2" for="lastname">New
+					Email</label> <input class="form-control" id="email" name="email"
+					value="">
+			</div>
+			<div class="form-group form-inline">
+				<label class="text-secondary col-2" for="lastname">New
+					Phone number</label> <input class="form-control" id="phone" name="phone"
+					value="">
+			</div>
+			<div class="form-group form-inline">
+				<label class="text-secondary col-2" for="lastname">New
+					Street</label> <input class="form-control" id="street" name="street"
+					value="">
+			</div>
+			<div class="form-group form-inline">
+				<label class="text-secondary col-2" for="lastname">New
+					City</label> <input class="form-control" id="city" name="city"
+					value="">
+			</div>
+			<div class="form-group form-inline">
+				<label class="text-secondary col-2" for="lastname">New
+					State</label> <input class="form-control" id="state" name="state"
+					value="">
+			</div>
+			<div class="form-group form-inline">
+				<label class="text-secondary col-2" for="lastname">New
+					Zip</label> <input class="form-control" id="zip" name="zip"
+					value="">
+			</div>
+
+
 			<div class="form-group form-inline offset-md-2">
 				<input class="btn btn-info ml-2 mr-2" type="submit">
 			</div>

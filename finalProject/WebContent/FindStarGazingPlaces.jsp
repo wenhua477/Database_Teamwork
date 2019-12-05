@@ -50,34 +50,8 @@
 			<a href="top10visitedplaces" />>Check Top 10 Visited Places</a> <BR /> 
 			<a href="top10recommendedplaces" />>Check Top 10 Recommended Places</a> <BR /> 
 			<a href="top10ratingplaces" />>Check Top 10 Rating Places</a> <BR />
-			<a href="top10byElevation"?sessionid=<c:out value="${fn:escapeXml(session.getId())}"  />>Check Top 10 Places by Elevation</a> 
-
-<%-- 			<form action="addComment" method="post">
-				<div class="form-row">
-					<div class="form-group col-md-6">
-						<label for="comment">Comment</label> <input type="text"
-							class="form-control" id="comment" name="comment">
-					</div>
-					<div class="form-group col-md-4">
-						<label for="rating">Rating</label> <select id="rating"
-							class="form-control" name="rating">
-							<option selected>Choose Rate</option>
-							<option value=5.0 selected>5.0</option>
-							<option value=4.0>4.0</option>
-							<option value=3.0>3.0</option>
-							<option value=2.0>2.0</option>
-							<option value=1.0>1.0</option>
-						</select>
-					</div>
-					<input type="hidden" class="form-control" id="placeid"
-						name="placeid" value="${place.getPlaceId()}">
-					<div class="form-group col-md-2">
-						<input class="btn btn-info mt-4" type="submit" value="Add Review" />
-					</div>
-				</div>
-			</form> --%>
-	
-			
+			<a href="Top10byElevation" />Check Top 10 Places by Elevation</a> 
+<%-- <jsp:forward page="/top10byElevation.jsp"/>Check Top 10 Places by Elevation</a>  --%>
 			
 			<BR /> <BR />
 			

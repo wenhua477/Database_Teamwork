@@ -12,6 +12,7 @@ public class TotalInforDao {
 	protected ConnectionManager connectionManager;
 
 	  private static TotalInforDao instance = null;
+
 	  
 	  
 	  protected TotalInforDao() {
@@ -27,26 +28,34 @@ public class TotalInforDao {
 	  }
 	  
 		  
-	  public List<TotalInfor> getStargazingPlacesAndOrderByElevation() throws SQLException {
+	  public List<TotalInfor> getStargazingPlacesAndOrderByElevation(Double lati, Double longti, Double dist) throws SQLException {
 		    //    1 latitude = 111km.
+		    
 		    String selectStarGazingPlaces =
-		        "SELECT * "
-		            + " FROM temp "
-		            + " LEFT OUTER JOIN"
-		            + " SELECT Elevation, Population  " 
-		            + " FROM LocationInfo  " 
-		            + " ON temp.Latitude = LocationInfo.Latitude AND temp.Longitude = LocationInfo.Longitude "
-		            + "	ORDER BY LocationInfo.Elevation DESC";
-
+"	SELECT s.PlaceId, s.Latitude, s.Longitude, s.State, SQRT(POW(Latitude - ?, 2) + POW(Longitude - ?, 2)) AS Total_dist, c.fips," + 
+"    l.elevation,l.population" + 
+"    from StarGazingPlaces s" + 
+"    inner join  campsites c" + 
+"    on s.PlaceId = c.PlaceId" + 
+"    inner join(select Elevation, Population, fips from LocationInfo)l " + 
+"	ON c.fips = l.fips " + 
+"	HAVING Total_dist < ?"+
+"	ORDER BY l.Elevation DESC;";
 		    
 		    List<TotalInfor> starGazingPlacesList = new ArrayList<TotalInfor>();
 		    Connection connection = null;
 		    PreparedStatement selectStmt = null;
 		    ResultSet results = null;
+		    System.out.println("running");
 		    try {
 		      connection = connectionManager.getConnection();
 		      selectStmt = connection.prepareStatement(selectStarGazingPlaces);
 
+		      
+		      selectStmt.setDouble(1, lati);
+		      selectStmt.setDouble(2, longti);
+		      selectStmt.setDouble(3, dist);
+		      
 		      results = selectStmt.executeQuery();
 
 		      while (results.next()) {
@@ -61,7 +70,7 @@ public class TotalInforDao {
 			        int elevation = results.getInt("Elevation");
 			        String population = results.getString("Population");
 
-			        TotalInfor place = new TotalInfor(placeId, latitude, longitude, state,dis, fips, elevation, population);
+			        TotalInfor place = new TotalInfor(placeId, latitude, longitude, state, dis, fips, elevation, population);
 			        
 			        
 			        if (place != null) {
