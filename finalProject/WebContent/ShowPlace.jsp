@@ -157,6 +157,19 @@
 		</c:if>
 
 	</div>
+	<div>
+	<c:if test="${place.getPlaceId() > 1}">
+			<a href="showplace?placeid=<c:out value="${place.getPlaceId()-1}"/>">  Previous Stargazing Place</a>
+	</c:if>
+	</div>
+
+
+	<c:if test="${place.getPlaceId() < 2925}">
+			<a href="showplace?placeid=<c:out value="${place.getPlaceId()+1}"/>">Next Stargazing Place</a>
+	</c:if>
+	  <br/>
+	    <br/>
+	
 
 </body>
 
