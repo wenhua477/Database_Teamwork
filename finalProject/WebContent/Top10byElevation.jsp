@@ -12,7 +12,7 @@
 <title>Top 10 By Elevation</title>
 </head>
 <body class="mr-2 ml-2">
-
+		<h2>Sort query Result by Elevation</h2>
 		<BR/>
 		<table class="table" border="1">
             <tr>
@@ -21,6 +21,7 @@
                 <th>State</th>
 				<th>Population</th>
                 <th>Elevation</th>
+                <th>Crime Rate</th>
                 <th>Detail</th>
 
             </tr>
@@ -30,7 +31,8 @@
                     <td><c:out value="${place.getLongitude()}" /></td>
                     <td><c:out value="${place.getState()}" /></td>
                     <td><c:out value="${place.getPopulation()}" /></td>
-                    <td><c:out value="${place.getElevation()}" /></td>                   
+                    <td><c:out value="${place.getElevation()}" /></td>   
+                    <td><c:out value="${place.getCrimeRate()}" /></td>                 
                     <td><a href="showplace?placeid=<c:out value="${place.getPlaceId()}"/>">View detail</a></td>
 
                 </tr>

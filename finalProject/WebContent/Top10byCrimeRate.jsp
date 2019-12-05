@@ -12,35 +12,33 @@
 <title>Top 10 by Crime</title>
 </head>
 <body class="mr-2 ml-2">
-
+		<h2>Sort query Result by CrimeRate</h2>
 		<BR/>
 		<table class="table" border="1">
             <tr>
-                <th>Place Id</th>
                 <th>Latitude</th>
                 <th>Longitude</th>
                 <th>State</th>
-                <th>Distance</th>
-				<th>Population</th>
+                <th>Crime Rate</th>
+                <th>Population</th>
                 <th>Elevation</th>
-                <th>CrimeRate</th>
                 <th>Detail</th>
 
             </tr>
             <c:forEach items="${places}" var="place" >
                 <tr>
-                    <td><c:out value="${place.getPlaceId()}" /></td>
                     <td><c:out value="${place.getLatitude()}" /></td>
                     <td><c:out value="${place.getLongitude()}" /></td>
                     <td><c:out value="${place.getState()}" /></td>
-                    <td><c:out value="${place.getDistance()}" /></td>
+ 
+                    <td><c:out value="${place.getCrimeRate()}" /></td>  
                     <td><c:out value="${place.getPopulation()}" /></td>
-                    <td><c:out value="${place.getElevation()}" /></td>
-                    <td><c:out value="${place.getCrimeRate()}" /></td>                    
+                    <td><c:out value="${place.getElevation()}" /></td>       
+                              
                     <td><a href="showplace?placeid=<c:out value="${place.getPlaceId()}"/>">View detail</a></td>
 
                 </tr>
-            </c:forEach>
+            </c:forEach> 
        	</table>
 	</form>
 	<br/>
