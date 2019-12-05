@@ -46,10 +46,15 @@
 			<div>
 				<span class="form-text text-info" id="successMessage"><b>${messages.success}</b></span>
 			</div>
-			<BR /> <BR /> <a href="top10visitedplaces" />>Check Top 10 Visited
-			Places</a> <BR /> <a href="top10recommendedplaces" />>Check Top 10
-			Recommended Places</a> <BR /> <a href="top10ratingplaces" />>Check Top 10
-			Rating Places</a> <BR /> <BR />
+			<BR /> <BR /> 
+			<a href="top10visitedplaces" />>Check Top 10 Visited Places</a> <BR /> 
+			<a href="top10recommendedplaces" />>Check Top 10 Recommended Places</a> <BR /> 
+			<a href="top10ratingplaces" />>Check Top 10 Rating Places</a> 
+			<a href="top10byElevation" />>Check Top 10 Places by Elevation</a> 
+			<a href="top10byCrimeRate" />>Check Top 10 Places by CrimeRate</a> 
+			<BR /> <BR />
+			
+			
 			<table class="table" border="1">
 				<tr>
 					<th>Place Id</th>
