@@ -23,7 +23,6 @@
                 <th>Distance</th>
 				<th>Population</th>
                 <th>Elevation</th>
-                <th>CrimeRate</th>
                 <th>Detail</th>
 
             </tr>
@@ -35,8 +34,7 @@
                     <td><c:out value="${place.getState()}" /></td>
                     <td><c:out value="${place.getDistance()}" /></td>
                     <td><c:out value="${place.getPopulation()}" /></td>
-                    <td><c:out value="${place.getElevation()}" /></td>
-                    <td><c:out value="${place.getCrimeRate()}" /></td>                    
+                    <td><c:out value="${place.getElevation()}" /></td>                   
                     <td><a href="showplace?placeid=<c:out value="${place.getPlaceId()}"/>">View detail</a></td>
 
                 </tr>

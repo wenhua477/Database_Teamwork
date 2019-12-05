@@ -17,7 +17,10 @@
 		<Strong>Location:</Strong> ${weatherInfor.getCityName()}
 	</p>
 	<p>
-		<Strong>Temperature:</Strong> ${weatherInfor.getTemperature()}
+		<Strong>Min Temperature:</Strong> ${weatherInfor.getMinTemp()}
+	</p>
+	<p>
+		<Strong>Max Temperature:</Strong> ${weatherInfor.getMaxTemp()}
 	</p>
 	<p>
 		<Strong>Has Rain?</Strong> ${weatherInfor.getHasRain()}

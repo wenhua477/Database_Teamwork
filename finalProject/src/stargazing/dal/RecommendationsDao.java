@@ -89,7 +89,7 @@ public class RecommendationsDao {
 		    } finally {
 		      if (connection != null) {
 		        connection.close();
-		      }
+	      }
 		      if (selectStmt != null) {
 		        selectStmt.close();
 		      }

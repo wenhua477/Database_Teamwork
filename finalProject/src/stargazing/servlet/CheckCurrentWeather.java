@@ -101,6 +101,9 @@ public class CheckCurrentWeather extends HttpServlet {
                                     + "/" + cwd.getMainData().getTempMin() + "\'K");
                        
                         weatherInfor.setTemperature(cwd.getMainData().getTempMin()+ "-"+ cwd.getMainData().getTempMax()+"K");
+                        weatherInfor.setMinTemp(cwd.getMainData().getTempMin() - 273.15);
+                        weatherInfor.setMaxTemp(cwd.getMainData().getTempMax() - 273.15);
+                        
                        
                     }
                     System.out.println("----");

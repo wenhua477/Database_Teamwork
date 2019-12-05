@@ -70,16 +70,45 @@
 
 		<br />
 		<!-- show comments list -->
-		<div class="row">
-			<c:forEach items="${reviews}" var="review">
+<%--  	  <div class="row">
+			<c:forEach items="${reviews}" items = "${users}" var="review" var="user"  >	
 				<div class="col-md-12">
 					<span style="float: right"><fmt:formatDate
 							value="${review.getCreatedTime()}" type="date" /></span> <span
 						class="text-primary">${review.getContent()}</span> <span
 						class="text">(${review.getRating()})</span>
+						 <span
+						class="text">(${review.getUserId()})</span>
+						<span
+						class="text">(${user.getUserName()})</span>
 				</div>
 			</c:forEach>
+		</div> 
+		
+		
+		<div>
+ --%>
+
+
+
+<c:forEach var="user" items="${users}" varStatus="status">
+  <tr>
+  					<span style="float: right"><fmt:formatDate
+							value="${reviews[status.index].getCreatedTime()}" type="date" />
+							</span>
+          <td>${reviews[status.index].getRating()}</td>
+      <td>${reviews[status.index].getContent()}</td>
+						<span class="text">(${user.getUserName()})</span>
+
+  </tr>
+  <br/>
+</c:forEach>
 		</div>
+		
+		
+		
+		
+		<!-- </div>  -->
 
 		<br />
 		<!--  add comment-->

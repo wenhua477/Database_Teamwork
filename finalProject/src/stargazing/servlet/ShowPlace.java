@@ -1,5 +1,6 @@
 package stargazing.servlet;
 import stargazing.dal.StarGazingPlacesDao;
+import stargazing.dal.UsersDao;
 import stargazing.dal.CampsitesDao;
 import stargazing.dal.LocationInfoDao;
 import stargazing.dal.CountyInfoDao;
@@ -28,6 +29,7 @@ public class ShowPlace extends HttpServlet {
     protected LocationInfoDao locationInfoDao;
     protected CountyInfoDao countyInfoDao;
     protected ReviewsDao reviewsDao;
+    protected UsersDao usersDao;
 
     @Override
     public void init() throws ServletException {
@@ -36,6 +38,7 @@ public class ShowPlace extends HttpServlet {
     	locationInfoDao = LocationInfoDao.getInstance();
     	countyInfoDao = CountyInfoDao.getInstance();
     	reviewsDao = ReviewsDao.getInstance();
+    	usersDao = UsersDao.getInstance();
     }
     
     @Override
@@ -48,6 +51,7 @@ public class ShowPlace extends HttpServlet {
         LocationInfo location = null;
         CountyInfo county = null;
         List<Reviews> reviews = new ArrayList<Reviews>();
+        List<Users> users = new ArrayList<Users>();
         
         String placeIdString = req.getParameter("placeid");
         if (placeIdString == null || placeIdString.trim().isEmpty()) {
@@ -63,6 +67,15 @@ public class ShowPlace extends HttpServlet {
                 county = countyInfoDao.getCountyInfoByFips(fips);
                 System.out.println(county);
                 reviews = reviewsDao.getReviewsByPlaceId(placeId);
+                
+        		for (int i = 0; i < reviews.size(); i++) {
+        			Users user= usersDao.getUserById(reviews.get(i).getUserId());
+        			users.add(user);
+        			
+        		}
+                
+       
+                
             } catch (SQLException e) {
                 e.printStackTrace();
                 throw new IOException(e);
@@ -74,6 +87,7 @@ public class ShowPlace extends HttpServlet {
         req.setAttribute("location", location);
         req.setAttribute("county", county);
         req.setAttribute("reviews", reviews);
+        req.setAttribute("users", users);
         
         req.getRequestDispatcher("/ShowPlace.jsp").forward(req, resp);
     }

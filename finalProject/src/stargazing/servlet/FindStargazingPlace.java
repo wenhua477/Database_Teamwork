@@ -46,7 +46,9 @@ public class FindStargazingPlace extends HttpServlet {
 		// Map for storing messages.
 		Map<String, String> messages = new HashMap<String, String>();
 		req.setAttribute("messages", messages);
-
+		
+		HttpSession session = req.getSession();
+		
 		List<StarGazingPlaces> starGazingPlaces = new ArrayList<StarGazingPlaces>();
 
 		String address = req.getParameter("location");
