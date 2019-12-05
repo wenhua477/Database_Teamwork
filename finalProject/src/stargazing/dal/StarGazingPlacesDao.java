@@ -109,44 +109,44 @@ public class StarGazingPlacesDao {
             + " HAVING Total_dist < ? "
             + " ORDER BY Total_dist ASC; ";
     
-//    
-//    String createTempTable =  
-//      "DROP TABLE IF EXISTS temp;"
-//      + "CREATE TABLE temp "
-//      + "  as (SELECT PlaceId, "
-//      + "Latitude, Longitude, State, SQRT(POW(Latitude - ?, 2) + POW(Longitude - ?, 2)) AS Total_dist"
-//      + " FROM StarGazingPlaces "
-//            + " HAVING Total_dist < ? "
-//            + " ORDER BY Total_dist ASC); ";
-//    
-//    String onlyCreate = "DROP TABLE IF EXISTS temp;"
-//    	      + " CREATE TABLE temp ";
+    
+    String createTempTable =  
+      "DROP TABLE IF EXISTS temp;"
+      + "CREATE TABLE temp "
+      + "  as (SELECT PlaceId, "
+      + "Latitude, Longitude, State, SQRT(POW(Latitude - ?, 2) + POW(Longitude - ?, 2)) AS Total_dist"
+      + " FROM StarGazingPlaces "
+            + " HAVING Total_dist < ? "
+            + " ORDER BY Total_dist ASC); ";
+    
+    String onlyCreate = "DROP TABLE IF EXISTS temp;"
+    	      + " CREATE TABLE temp ";
     
     List<StarGazingPlaces> starGazingPlacesList = new ArrayList<StarGazingPlaces>();
     Connection connection = null;
-//    Connection connection2 = null;
-//    Connection connection3 = null;
+    Connection connection2 = null;
+    Connection connection3 = null;
     
     PreparedStatement selectStmt = null;
-//    PreparedStatement newTable = null;
-//    PreparedStatement only = null;
+    PreparedStatement newTable = null;
+    PreparedStatement only = null;
     ResultSet results = null;
-//    ResultSet r2 = null;
+    ResultSet r2 = null;
     try {
       connection = connectionManager.getConnection();
-//      connection2 = connectionManager.getConnection();
+      connection2 = connectionManager.getConnection();
       
       selectStmt = connection.prepareStatement(selectStarGazingPlaces);
-//      newTable = connection2.prepareStatement(createTempTable);
-//      only = connection3.prepareStatement(onlyCreate);
+      newTable = connection2.prepareStatement(createTempTable);
+      only = connection3.prepareStatement(onlyCreate);
       
       selectStmt.setDouble(1, latitude);
       selectStmt.setDouble(2, longitude);
       selectStmt.setDouble(3, distanceLimit);
 
-//      newTable.setDouble(1, latitude);
-//      newTable.setDouble(2, longitude);
-//      newTable.setDouble(3, distanceLimit);
+      newTable.setDouble(1, latitude);
+      newTable.setDouble(2, longitude);
+      newTable.setDouble(3, distanceLimit);
       
       
       results = selectStmt.executeQuery();
@@ -154,7 +154,7 @@ public class StarGazingPlacesDao {
       
 //      newTable.executeUpdate();
 //      only.executeUpdate();
-//      	only.executeQuery();
+      	only.executeQuery();
       System.out.println("xixixi");
 
       while (results.next()) {

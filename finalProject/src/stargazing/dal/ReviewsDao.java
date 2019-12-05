@@ -58,6 +58,8 @@ public class ReviewsDao {
     }
   }
   
+  
+  
   public List<StarGazingPlaces> getTop10Rated()throws SQLException{
 	  String selectPlaceIds =
 		        "SELECT PlaceId, AVG(Rating) AS CNT "

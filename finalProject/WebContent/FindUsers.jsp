@@ -39,7 +39,7 @@
 			</div>
 		</form>
 		<br /> <br />
-		<h3>Matching Users</h3>
+		<h3>Matching User</h3>
 		<table class="table" border="1">
 			<tr>
 				<th>UserName</th>
@@ -50,6 +50,7 @@
 				<th>Level</th>
 				<th>Delete User</th>
 				<th>Update User</th>
+				<th>View Detail</th>
 			</tr>
 			<c:forEach items="${users}" var="user">
 				<tr>
@@ -66,6 +67,9 @@
 						href="userdelete?userid=<c:out value="${user.getUserId()}"/>">Delete</a></td>
 					<td><a
 						href="userupdate?userid=<c:out value="${user.getUserId()}"/>">Update</a></td>
+					<td><a
+						href="showuser?userid=<c:out value="${fn:escapeXml(user.getUserId())}"/>">View
+								detail</a></td>
 				</tr>
 			</c:forEach>
 		</table>
