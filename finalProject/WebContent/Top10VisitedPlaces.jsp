@@ -13,6 +13,24 @@
 </head>
 <body class="mr-2 ml-2">
 
+	<nav
+		class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+	<a class="navbar-brand" href="findstargazingplace">Home</a>
+	<c:if test="${Logstate == 'Log Out'}">
+	
+	<div class="collapse navbar-collapse" id="navbarText">
+	
+	<a class="navbar-brand" href="showuser">UserProfile</a>
+	</div>
+	</c:if>
+	<div class="collapse navbar-collapse" id="navbarText">
+		<span class="navbar-text ml-auto"><a class="nav-link"
+			href="${Logstatehref}">${Logstate}</a></span>
+	</div>
+	
+	</nav>
+
+
 		<BR/>
 		<table class="table" border="1">
             <tr>
