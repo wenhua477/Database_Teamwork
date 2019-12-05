@@ -38,10 +38,14 @@ public class RecommendationCreate extends HttpServlet {
 		Map<String, String> messages = new HashMap<String, String>();
 		req.setAttribute("messages", messages);
 
+		
 		HttpSession session = req.getSession();
+		
+		
 		int usrId = (Integer)session.getAttribute("userid");
 		// Retrieve and validate name.
-		String placeid = req.getParameter("placeid");
+		String placeid = (String)session.getAttribute("placeid");
+		//String placeid = req.getParameter("placeid");
 		// Create the Recommendation.
 		
 		try {
@@ -52,6 +56,8 @@ public class RecommendationCreate extends HttpServlet {
 			e.printStackTrace();
 			throw new IOException(e);
 		}
+		
+		
 
 		resp.sendRedirect(req.getContextPath() + "/showplace?placeid=" + placeid);
 	}

@@ -21,6 +21,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/showuser")
 public class ShowUser extends HttpServlet {
@@ -49,8 +50,14 @@ public class ShowUser extends HttpServlet {
         List<Reviews> reviews = null;
         List<Recommendations> recommendations = null;
         List<Integer> placeIds = new ArrayList<Integer>();
-        String userIdString = req.getParameter("userid");
-        if (userIdString == null || userIdString.trim().isEmpty()) {
+        HttpSession session = req.getSession();
+        
+		int usrId = (Integer)session.getAttribute("userid");
+		String userIdString = Integer.toString(usrId);
+		
+        //String userIdString = req.getParameter("userid");
+        
+		if (userIdString == null || userIdString.trim().isEmpty()) {
             messages.put("seccess", "Place enter valid place id.");
         } else {
             try {

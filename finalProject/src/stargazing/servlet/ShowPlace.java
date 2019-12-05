@@ -20,6 +20,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/showplace")
 public class ShowPlace extends HttpServlet {
@@ -47,6 +48,7 @@ public class ShowPlace extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         Map<String, String> messages = new HashMap<String, String>();
+        HttpSession session = req.getSession();
         req.setAttribute("messages", messages);
         
         Campsites place = null;
@@ -94,7 +96,7 @@ public class ShowPlace extends HttpServlet {
         req.setAttribute("county", county);
         req.setAttribute("reviews", reviews);
         req.setAttribute("users", users);
-        
+        session.setAttribute("placeid", placeIdString);
         req.getRequestDispatcher("/ShowPlace.jsp").forward(req, resp);
     }
     
@@ -123,6 +125,7 @@ public class ShowPlace extends HttpServlet {
             messages.put("previousPlaceId", placeIdString);       
         }
         req.setAttribute("place", place);
+        
         
         req.getRequestDispatcher("/ShowPlace.jsp").forward(req, resp);
     }
