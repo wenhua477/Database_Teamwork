@@ -77,6 +77,7 @@ public class StarGazingPlacesDao {
         double longitude = results.getDouble("Longitude");
         String state = results.getString("State");
         String fips = results.getString("fips");
+        
         StarGazingPlaces starGazingPlace = new StarGazingPlaces(placeId, latitude, longitude,
             state, fips);
         return starGazingPlace;
@@ -138,15 +139,15 @@ public class StarGazingPlacesDao {
       
       selectStmt = connection.prepareStatement(selectStarGazingPlaces);
       newTable = connection2.prepareStatement(createTempTable);
-      only = connection3.prepareStatement(onlyCreate);
+//      only = connection3.prepareStatement(onlyCreate);
       
       selectStmt.setDouble(1, latitude);
       selectStmt.setDouble(2, longitude);
       selectStmt.setDouble(3, distanceLimit);
 
-      newTable.setDouble(1, latitude);
-      newTable.setDouble(2, longitude);
-      newTable.setDouble(3, distanceLimit);
+//      newTable.setDouble(1, latitude);
+//      newTable.setDouble(2, longitude);
+//      newTable.setDouble(3, distanceLimit);
       
       
       results = selectStmt.executeQuery();
@@ -154,7 +155,7 @@ public class StarGazingPlacesDao {
       
 //      newTable.executeUpdate();
 //      only.executeUpdate();
-      	only.executeQuery();
+//      	only.executeQuery();
       System.out.println("xixixi");
 
       while (results.next()) {

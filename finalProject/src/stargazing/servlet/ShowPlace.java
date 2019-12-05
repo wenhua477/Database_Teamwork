@@ -62,13 +62,11 @@ public class ShowPlace extends HttpServlet {
          
                 String fips = place.getFips();
                 location = locationInfoDao.getLocationInfoByFips(fips);
-<<<<<<< HEAD
+
 //                System.out.println(fips);
                 county = countyInfoDao.getCountyInfoByFips(fips);
 //                System.out.println(county);
-=======
-                county = countyInfoDao.getCountyInfoByFips(fips);
->>>>>>> show comment
+
                 reviews = reviewsDao.getReviewsByPlaceId(placeId);
             } catch (SQLException e) {
                 e.printStackTrace();

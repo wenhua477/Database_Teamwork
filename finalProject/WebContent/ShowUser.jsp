@@ -82,7 +82,7 @@
 			<c:forEach items="${places}" var="place">
 				<div class="col-md-12">
 					<a
-						href="showplace?placeid=<c:out value="${fn:escapeXml(place.getPlaceId())}"/>">(${place.getPlaceId})</a>
+						href="showplace?placeid=<c:out value="${fn:escapeXml(place)}"/>">(${place})</a>
 				</div>
 			</c:forEach>
 		</div>

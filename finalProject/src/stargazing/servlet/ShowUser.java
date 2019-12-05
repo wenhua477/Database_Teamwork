@@ -48,7 +48,7 @@ public class ShowUser extends HttpServlet {
         Users user = null;
         List<Reviews> reviews = null;
         List<Recommendations> recommendations = null;
-        List<StarGazingPlaces> places = new ArrayList<StarGazingPlaces>();
+        List<Integer> placeIds = new ArrayList<Integer>();
         String userIdString = req.getParameter("userid");
         if (userIdString == null || userIdString.trim().isEmpty()) {
             messages.put("seccess", "Place enter valid place id.");
@@ -59,7 +59,7 @@ public class ShowUser extends HttpServlet {
                 reviews = reviewsDao.getReviewsByUserId(userId);
                 recommendations = recommendationsDao.getRecommendationsByUserId(userId);
                 for (Recommendations r : recommendations) {
-                	places.add(stargazingPlacesDao.getStarGazingPlacesById(r.getPlaceId()));
+                	placeIds.add(r.getPlaceId());
                 }
                 
             } catch (SQLException e) {
@@ -71,7 +71,7 @@ public class ShowUser extends HttpServlet {
         }
         req.setAttribute("user", user);
         req.setAttribute("reviews", reviews);
-        req.setAttribute("places", places);
+        req.setAttribute("places", placeIds);
         
         req.getRequestDispatcher("/ShowUser.jsp").forward(req, resp);
     }
