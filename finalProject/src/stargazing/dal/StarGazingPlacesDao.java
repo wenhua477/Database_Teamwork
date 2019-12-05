@@ -107,34 +107,70 @@ public class StarGazingPlacesDao {
         "SELECT PlaceId, Latitude, Longitude, State, SQRT(POW(Latitude - ?, 2) + POW(Longitude - ?, 2)) AS Total_dist "
             + " FROM StarGazingPlaces "
             + " HAVING Total_dist < ? "
-            + " ORDER BY Total_dist ASC;";
+            + " ORDER BY Total_dist ASC; ";
+    
+//    
+//    String createTempTable =  
+//      "DROP TABLE IF EXISTS temp;"
+//      + "CREATE TABLE temp "
+//      + "  as (SELECT PlaceId, "
+//      + "Latitude, Longitude, State, SQRT(POW(Latitude - ?, 2) + POW(Longitude - ?, 2)) AS Total_dist"
+//      + " FROM StarGazingPlaces "
+//            + " HAVING Total_dist < ? "
+//            + " ORDER BY Total_dist ASC); ";
+//    
+//    String onlyCreate = "DROP TABLE IF EXISTS temp;"
+//    	      + " CREATE TABLE temp ";
+    
     List<StarGazingPlaces> starGazingPlacesList = new ArrayList<StarGazingPlaces>();
     Connection connection = null;
+//    Connection connection2 = null;
+//    Connection connection3 = null;
+    
     PreparedStatement selectStmt = null;
+//    PreparedStatement newTable = null;
+//    PreparedStatement only = null;
     ResultSet results = null;
+//    ResultSet r2 = null;
     try {
       connection = connectionManager.getConnection();
+//      connection2 = connectionManager.getConnection();
+      
       selectStmt = connection.prepareStatement(selectStarGazingPlaces);
+//      newTable = connection2.prepareStatement(createTempTable);
+//      only = connection3.prepareStatement(onlyCreate);
+      
       selectStmt.setDouble(1, latitude);
       selectStmt.setDouble(2, longitude);
       selectStmt.setDouble(3, distanceLimit);
 
+//      newTable.setDouble(1, latitude);
+//      newTable.setDouble(2, longitude);
+//      newTable.setDouble(3, distanceLimit);
+      
+      
       results = selectStmt.executeQuery();
+      
+      
+//      newTable.executeUpdate();
+//      only.executeUpdate();
+//      	only.executeQuery();
+      System.out.println("xixixi");
 
       while (results.next()) {
 
-    	  int placeId = results.getInt("PlaceId");
-    	  CampsitesDao campsiteDao = new CampsitesDao();
-	        ObservatoryDao observatoryDao = new ObservatoryDao();
-	        StarGazingPlaces place1 = campsiteDao.getCampsitesById(placeId);
-	        StarGazingPlaces place2 = observatoryDao.getObservatoryById(placeId);
-	        if (place1 != null) {
-	        	place1.setDistance(results.getDouble("Total_dist"));
-	        	starGazingPlacesList.add(place1);
-	        } else if (place2 != null){
-	        	starGazingPlacesList.add(place2);
-	        	place2.setDistance(results.getDouble("Total_dist"));
-	        }
+       int placeId = results.getInt("PlaceId");
+       CampsitesDao campsiteDao = new CampsitesDao();
+         ObservatoryDao observatoryDao = new ObservatoryDao();
+         StarGazingPlaces place1 = campsiteDao.getCampsitesById(placeId);
+         StarGazingPlaces place2 = observatoryDao.getObservatoryById(placeId);
+         if (place1 != null) {
+          place1.setDistance(results.getDouble("Total_dist"));
+          starGazingPlacesList.add(place1);
+         } else if (place2 != null){
+          starGazingPlacesList.add(place2);
+          place2.setDistance(results.getDouble("Total_dist"));
+         }
       }
     } catch (SQLException e) {
       e.printStackTrace();
@@ -176,5 +212,7 @@ public class StarGazingPlacesDao {
       }
     }
   }
+  
+  
 
 }

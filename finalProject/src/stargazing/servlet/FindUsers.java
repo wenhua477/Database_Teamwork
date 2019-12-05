@@ -85,20 +85,21 @@ public class FindUsers extends HttpServlet {
         List<Users> users = new ArrayList<Users>();
         
         // Retrieve and validate name.
-        // firstname is retrieved from the form POST submission. By default, it
+        // username is retrieved from the form POST submission. By default, it
         // is populated by the URL query string (in FindUsers.jsp).
-        String firstName = req.getParameter("firstname");
-        if (firstName == null || firstName.trim().isEmpty()) {
+        String userName = req.getParameter("username");
+        if (userName == null || userName.trim().isEmpty()) {
             messages.put("success", "Please enter a valid name.");
         } else {
         	// Retrieve BlogUsers, and store as a message.
         	try {
-            	users = usersDao.getUserByFirstname(firstName);
+            	Users user = usersDao.getUserByUserName(userName);
+            	users.add(user);
             } catch (SQLException e) {
     			e.printStackTrace();
     			throw new IOException(e);
             }
-        	messages.put("success", "Displaying results for user with first name being " + firstName);
+        	messages.put("success", "Displaying results for user with first name being " + userName);
         }
         req.setAttribute("users", users);
         
