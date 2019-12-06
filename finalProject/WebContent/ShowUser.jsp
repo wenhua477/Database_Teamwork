@@ -80,6 +80,8 @@
 							value="${review.getCreatedTime()}" type="date" /></span> <span
 						class="text-primary">${review.getContent()}</span> <span
 						class="text">(${review.getRating()})</span>
+						<a
+						href="showplace?placeid=<c:out value="${fn:escapeXml(place)}"/>">(${place})</a>
 				</div>
 			</c:forEach>
 		</div>
