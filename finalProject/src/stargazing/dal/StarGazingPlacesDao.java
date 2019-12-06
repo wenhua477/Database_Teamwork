@@ -157,11 +157,11 @@ public class StarGazingPlacesDao {
          StarGazingPlaces place1 = campsiteDao.getCampsitesById(placeId);
          StarGazingPlaces place2 = observatoryDao.getObservatoryById(placeId);
          if (place1 != null) {
-          place1.setDistance(results.getDouble("Total_dist"));
+          place1.setDistance(results.getDouble("Total_dist") * 70.0);
           starGazingPlacesList.add(place1);
          } else if (place2 != null){
           starGazingPlacesList.add(place2);
-          place2.setDistance(results.getDouble("Total_dist"));
+          place2.setDistance(results.getDouble("Total_dist")  * 70.0);
          }
       }
     } catch (SQLException e) {
