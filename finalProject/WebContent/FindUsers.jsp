@@ -32,7 +32,12 @@
 	</div>
 	
 	</nav>
+	<c:if test="${Logstate != 'Log Out' || username != 'admin'}">
+		<h2>Only administrator can visit this page.</h2>
+		<a href="login">Log in here</a>
+	</c:if>
 
+	<c:if test="${Logstate == 'Log Out' && username == 'admin'}">
 	<div class="mr-2 ml-2">
 		<h2>Search for a Stargazing User by UserName</h2>
 		<form action="findusers" method="post">
@@ -83,6 +88,7 @@
 			</c:forEach>
 		</table>
 	</div>
+</c:if>
 
 
 </body>

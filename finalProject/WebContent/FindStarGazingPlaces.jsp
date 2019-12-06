@@ -61,8 +61,8 @@
 			<a href="top10recommendedplaces" />>Check Top 10 Recommended Places</a> <BR /> 
 			<a href="top10ratingplaces" />>Check Top 10 Rating Places</a> <BR />
 			<a href="Top10byElevation" /> Check Places in range by Elevation-></a> <BR />
-			<a href="Top10byCrimeRate" /> Check Places in range by CrimeRate-></a> 
-			
+			<a href="Top10byCrimeRate" /> Check Places in range by CrimeRate-></a> <BR />
+			<a href="TopRating" /> Check Places by Rating-></a> 
 			<BR /> <BR />
 			
 			

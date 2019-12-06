@@ -9,9 +9,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<title>Current Weather</title>
+<title>Top Rating</title>
 </head>
 <body >
+
 
 	<nav
 		class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
@@ -30,21 +31,32 @@
 	
 	</nav>
 
-<div class="mr-2 ml-2">
-	<h2>Instant Weather Information</h2>
-	<p>
-		<Strong>Location:</Strong> ${weatherInfor.getCityName()}
-	</p>
-	<p>
-		<Strong>Min Temperature:</Strong> ${weatherInfor.getMinTemp()}
-	</p>
-	<p>
-		<Strong>Max Temperature:</Strong> ${weatherInfor.getMaxTemp()}
-	</p>
-	<p>
-		<Strong>Has Rain?</Strong> ${weatherInfor.getHasRain()}
-	</p> 
-	  
-	</div> 
+
+		<div class="mr-2 ml-2">
+		<h2>Sort query Result by Rating</h2>
+		<BR/>
+		<table class="table" border="1">
+            <tr>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>State</th>
+                <th>Detail</th>
+
+            </tr>
+            <c:forEach items="${places}" var="place" >
+                <tr>
+                    <td><c:out value="${place.getLatitude()}" /></td>
+                    <td><c:out value="${place.getLongitude()}" /></td>
+                    <td><c:out value="${place.getState()}" /></td>
+     
+                              
+                    <td><a href="showplace?placeid=<c:out value="${place.getPlaceId()}"/>">View detail</a></td>
+
+                </tr>
+            </c:forEach> 
+       	</table>
+	</form>
+	<br/>
+	</div>
 </body>
 </html>

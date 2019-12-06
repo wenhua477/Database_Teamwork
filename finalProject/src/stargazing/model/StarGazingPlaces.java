@@ -55,6 +55,15 @@ public class StarGazingPlaces {
 	    this.distance = distance;
 	  }
 
+  
+  public StarGazingPlaces(int placeId, double latitude, double longitude, String state) {
+	  this.placeId = placeId;
+	    this.latitude = latitude;
+	    this.longitude = longitude;
+	    this.state = state;
+	  
+	  }
+  
   public StarGazingPlaces(double latitude, double longitude, String state, String fips) {
     this.latitude = latitude;
     this.longitude = longitude;

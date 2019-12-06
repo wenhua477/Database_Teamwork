@@ -24,6 +24,7 @@
 	<div class="collapse navbar-collapse" id="navbarText">
 	
 	<a class="navbar-brand" href="showuser">UserProfile</a>
+	<a class="navbar-brand" href="userupdate">Update Profile</a>
 	</div>
 	</c:if>
 	<div class="collapse navbar-collapse" id="navbarText">

@@ -205,6 +205,84 @@ public class StarGazingPlacesDao {
     }
   }
   
+  
+  public List<StarGazingPlaces> getStargazingPlacesByLatitudeAndLongitudeAndRate(double latitude,
+	      double longitude, double distanceLimit) throws SQLException {
+	    //    1 latitude = 111km.
+	    String selectStarGazingPlaces =
+	    		"	SELECT s.PlaceId, s.Latitude, s.Longitude, s.State, SQRT(POW(Latitude - ?, 2) + POW(Longitude - ?, 2)) AS Total_dist," + 
+	    				"    r.Rating" + 
+	    				"    from StarGazingPlaces s" + 
+	    				"    inner join  Reviews r" + 
+	    				"    on s.PlaceId = r.PlaceId" + 
+	    				"	HAVING Total_dist < ?"+
+	    				"	ORDER BY r.Rating DESC";
+	    						    
+	    
+
+	    
+	    List<StarGazingPlaces> starGazingPlacesList = new ArrayList<StarGazingPlaces>();
+	    Connection connection = null;
+
+
+	    PreparedStatement selectStmt = null;
+
+
+	    ResultSet results = null;
+
+	    try {
+	      connection = connectionManager.getConnection();
+
+	      
+	      selectStmt = connection.prepareStatement(selectStarGazingPlaces);
+
+      
+	      selectStmt.setDouble(1, latitude);
+	      selectStmt.setDouble(2, longitude);
+	      selectStmt.setDouble(3, distanceLimit);
+
+
+
+	      results = selectStmt.executeQuery();
+	      
+	    
+	      while (results.next()) {
+
+	       int placeId = results.getInt("PlaceId");
+	        double latit = results.getDouble("Latitude");
+	        double longi = results.getDouble("Longitude");
+	        String state = results.getString("State");
+	        //String fips = results.getString("fips");
+	        
+	        StarGazingPlaces place1 = new StarGazingPlaces(placeId, latitude, longitude,
+	            state);
+	        
+	        System.out.println("0");
+	         if (place1 != null) {
+	          place1.setDistance(results.getDouble("Total_dist") * 70.0);
+	          System.out.println("1");
+	          starGazingPlacesList.add(place1);
+	         }
+	      }
+	      
+	    } catch (SQLException e) {
+	      e.printStackTrace();
+	      throw e;
+	    } finally {
+	      if (connection != null) {
+	        connection.close();
+	      }
+	      if (selectStmt != null) {
+	        selectStmt.close();
+	      }
+	      if (results != null) {
+	        results.close();
+	      }
+	    }
+	    return starGazingPlacesList;
+	  }
+
+	 
 
 }
 
