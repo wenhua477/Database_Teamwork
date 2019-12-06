@@ -81,7 +81,7 @@
 						class="text-primary">${review.getContent()}</span> <span
 						class="text">(${review.getRating()})</span>
 						<a
-						href="showplace?placeid=<c:out value="${fn:escapeXml(place)}"/>">(${place})</a>
+						href="showplace?placeid=<c:out value="${fn:escapeXml(review.getPlaceId())}"/>">(${review.getPlaceId()})</a>
 				</div>
 			</c:forEach>
 		</div>
