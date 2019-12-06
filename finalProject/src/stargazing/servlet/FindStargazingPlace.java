@@ -98,7 +98,7 @@ public class FindStargazingPlace extends HttpServlet {
 				// Retrieve places, and store as a message.
 				try {
 					starGazingPlaces = stargazingPlacesDao.getStargazingPlacesByLatitudeAndLongitude(latitude,
-							longitude, r);
+							longitude, r/70);
 //					stargazingPlacesDao.updateStargazingPlacesByLatitudeAndLongitude(latitude,
 //							longitude, r);
 					

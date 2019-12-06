@@ -46,7 +46,7 @@
 				<label class="text-secondary col-1">Location</label> <input
 					class="form-control col-4" id="location" name="location"
 					value="${fn:escapeXml(param.location)}"> <label
-					class="text-secondary col-1">Radius</label> <input
+					class="text-secondary col-1">Miles</label> <input
 					class="form-control" id="radius" name="radius"
 					value="${fn:escapeXml(param.radius)}">
 			</div>
