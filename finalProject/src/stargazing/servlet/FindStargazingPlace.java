@@ -123,7 +123,8 @@ public class FindStargazingPlace extends HttpServlet {
 		
 	// pass in the address of a location, return its coordination
 	private double[] getLatLongPositions(String address) throws Exception {
-		final String API_KEY = "AIzaSyDaeHXUOXFH5oc2l0pqYOT2CeWsjUv_PSU";
+		//TODO
+		final String API_KEY = "xxxxxxx";
 		final GeoApiContext context = new GeoApiContext.Builder().apiKey("AIzaSyDaeHXUOXFH5oc2l0pqYOT2CeWsjUv_PSU")
 				.build();
 
